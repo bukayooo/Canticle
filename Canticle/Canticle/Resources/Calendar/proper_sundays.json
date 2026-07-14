@@ -1,0 +1,551 @@
+[
+  {
+    "name": "Advent1",
+    "firstLessonMorning": {
+      "reference": "Isaiah 1"
+    },
+    "firstLessonEvening": {
+      "reference": "Isaiah 2"
+    }
+  },
+  {
+    "name": "Advent2",
+    "firstLessonMorning": {
+      "reference": "Isaiah 5"
+    },
+    "firstLessonEvening": {
+      "reference": "Isaiah 11:1-11"
+    }
+  },
+  {
+    "name": "Advent3",
+    "firstLessonMorning": {
+      "reference": "Isaiah 25"
+    },
+    "firstLessonEvening": {
+      "reference": "Isaiah 26"
+    }
+  },
+  {
+    "name": "Advent4",
+    "firstLessonMorning": {
+      "reference": "Isaiah 30:1-27"
+    },
+    "firstLessonEvening": {
+      "reference": "Isaiah 32"
+    }
+  },
+  {
+    "name": "ChristmasSunday",
+    "firstLessonMorning": {
+      "reference": "Isaiah 35"
+    },
+    "firstLessonEvening": {
+      "reference": "Isaiah 38"
+    }
+  },
+  {
+    "name": "Christmas2",
+    "firstLessonMorning": {
+      "reference": "Isaiah 42"
+    },
+    "firstLessonEvening": {
+      "reference": "Isaiah 43"
+    }
+  },
+  {
+    "name": "Epiphany1",
+    "firstLessonMorning": {
+      "reference": "Isaiah 51"
+    },
+    "firstLessonEvening": {
+      "reference": "Isaiah 52:13-53:999"
+    }
+  },
+  {
+    "name": "Epiphany2",
+    "firstLessonMorning": {
+      "reference": "Isaiah 55"
+    },
+    "firstLessonEvening": {
+      "reference": "Isaiah 57"
+    }
+  },
+  {
+    "name": "Epiphany3",
+    "firstLessonMorning": {
+      "reference": "Isaiah 62"
+    },
+    "firstLessonEvening": {
+      "reference": "Isaiah 65"
+    }
+  },
+  {
+    "name": "Epiphany4",
+    "firstLessonMorning": {
+      "reference": "Job 27"
+    },
+    "firstLessonEvening": {
+      "reference": "Job 28"
+    }
+  },
+  {
+    "name": "Epiphany5",
+    "firstLessonMorning": {
+      "reference": "Proverbs 1"
+    },
+    "firstLessonEvening": {
+      "reference": "Proverbs 3"
+    }
+  },
+  {
+    "name": "Epiphany6",
+    "firstLessonMorning": {
+      "reference": "Proverbs 9"
+    },
+    "firstLessonEvening": {
+      "reference": "Proverbs 11"
+    }
+  },
+  {
+    "name": "Septuagesima",
+    "firstLessonMorning": {
+      "reference": "Genesis 1:1-2:4"
+    },
+    "firstLessonEvening": {
+      "reference": "Genesis 2:4"
+    },
+    "secondLessonMorning": {
+      "reference": "Revelation 21:1-9"
+    },
+    "secondLessonEvening": {
+      "reference": "Revelation 21:9-22:6"
+    }
+  },
+  {
+    "name": "Sexagesima",
+    "firstLessonMorning": {
+      "reference": "Genesis 3"
+    },
+    "firstLessonEvening": {
+      "reference": "Genesis 6"
+    }
+  },
+  {
+    "name": "Quinquagesima",
+    "firstLessonMorning": {
+      "reference": "Genesis 9:20"
+    },
+    "firstLessonEvening": {
+      "reference": "Genesis 12"
+    }
+  },
+  {
+    "name": "Lent1",
+    "firstLessonMorning": {
+      "reference": "Genesis 19:12-30"
+    },
+    "firstLessonEvening": {
+      "reference": "Genesis 22:1-20"
+    }
+  },
+  {
+    "name": "Lent2",
+    "firstLessonMorning": {
+      "reference": "Genesis 27:1-41"
+    },
+    "firstLessonEvening": {
+      "reference": "Genesis 28"
+    }
+  },
+  {
+    "name": "Lent3",
+    "firstLessonMorning": {
+      "reference": "Genesis 37"
+    },
+    "firstLessonEvening": {
+      "reference": "Genesis 39"
+    }
+  },
+  {
+    "name": "Lent4",
+    "firstLessonMorning": {
+      "reference": "Genesis 42"
+    },
+    "firstLessonEvening": {
+      "reference": "Genesis 43"
+    }
+  },
+  {
+    "name": "Lent5",
+    "firstLessonMorning": {
+      "reference": "Exodus 3"
+    },
+    "firstLessonEvening": {
+      "reference": "Exodus 5"
+    }
+  },
+  {
+    "name": "PalmSunday",
+    "firstLessonMorning": {
+      "reference": "Exodus 9"
+    },
+    "firstLessonEvening": {
+      "reference": "Exodus 10"
+    },
+    "secondLessonMorning": {
+      "reference": "Matthew 26"
+    },
+    "secondLessonEvening": {
+      "reference": "Luke 19:28-999"
+    }
+  },
+  {
+    "name": "Easter",
+    "firstLessonMorning": {
+      "reference": "Exodus 12:1-29"
+    },
+    "firstLessonEvening": {
+      "reference": "Exodus 12:29-999"
+    },
+    "secondLessonMorning": {
+      "reference": "Revelation 1:10-19"
+    },
+    "secondLessonEvening": {
+      "reference": "John 20:11-19"
+    }
+  },
+  {
+    "name": "Easter1",
+    "firstLessonMorning": {
+      "reference": "Numbers 16:1-36"
+    },
+    "firstLessonEvening": {
+      "reference": "Numbers 16:36-999"
+    },
+    "secondLessonMorning": {
+      "reference": "1 Corinthians 15:1-29"
+    },
+    "secondLessonEvening": {
+      "reference": "John 20:24-30"
+    }
+  },
+  {
+    "name": "Easter2",
+    "firstLessonMorning": {
+      "reference": "Numbers 20:1-14"
+    },
+    "firstLessonEvening": {
+      "reference": "Numbers 20:14-21:10"
+    }
+  },
+  {
+    "name": "Easter3",
+    "firstLessonMorning": {
+      "reference": "Numbers 22"
+    },
+    "firstLessonEvening": {
+      "reference": "Numbers 23"
+    }
+  },
+  {
+    "name": "Easter4",
+    "firstLessonMorning": {
+      "reference": "Deuteronomy 4:1-23"
+    },
+    "firstLessonEvening": {
+      "reference": "Deuteronomy 4:23-41"
+    }
+  },
+  {
+    "name": "Easter5",
+    "firstLessonMorning": {
+      "reference": "Deuteronomy 6"
+    },
+    "firstLessonEvening": {
+      "reference": "Deuteronomy 9"
+    }
+  },
+  {
+    "name": "AscensionSunday",
+    "firstLessonMorning": {
+      "reference": "Deuteronomy 30"
+    },
+    "firstLessonEvening": {
+      "reference": "Deuteronomy 34"
+    }
+  },
+  {
+    "name": "WhitSunday",
+    "firstLessonMorning": {
+      "reference": "Deuteronomy 16"
+    },
+    "firstLessonEvening": {
+      "reference": "Isaiah 11"
+    },
+    "secondLessonMorning": {
+      "reference": "Romans 8:1-18"
+    },
+    "secondLessonEvening": {
+      "reference": "Galateans 5:16-999"
+    }
+  },
+  {
+    "name": "Trinity",
+    "firstLessonMorning": {
+      "reference": "Isaiah 6:1-11"
+    },
+    "firstLessonEvening": {
+      "reference": "Genesis 18"
+    },
+    "secondLessonMorning": {
+      "reference": "Revelation 1:1-9"
+    },
+    "secondLessonEvening": {
+      "reference": "Ephesians 4:1-17"
+    }
+  },
+  {
+    "name": "Trinity1",
+    "firstLessonMorning": {
+      "reference": "Joshua 3:7-4:15"
+    },
+    "firstLessonEvening": {
+      "reference": "Joshua 5:13-6:21"
+    }
+  },
+  {
+    "name": "Trinity2",
+    "firstLessonMorning": {
+      "reference": "Judges 4"
+    },
+    "firstLessonEvening": {
+      "reference": "Judges 5"
+    }
+  },
+  {
+    "name": "Trinity3",
+    "firstLessonMorning": {
+      "reference": "1 Samuel 2:1-27"
+    },
+    "firstLessonEvening": {
+      "reference": "1 Samuel 3"
+    }
+  },
+  {
+    "name": "Trinity4",
+    "firstLessonMorning": {
+      "reference": "1 Samuel 12"
+    },
+    "firstLessonEvening": {
+      "reference": "1 Samuel 13"
+    }
+  },
+  {
+    "name": "Trinity5",
+    "firstLessonMorning": {
+      "reference": "1 Samuel 15:1-24"
+    },
+    "firstLessonEvening": {
+      "reference": "1 Samuel 16"
+    }
+  },
+  {
+    "name": "Trinity6",
+    "firstLessonMorning": {
+      "reference": "2 Samuel 1"
+    },
+    "firstLessonEvening": {
+      "reference": "2 Samuel 12:1-24"
+    }
+  },
+  {
+    "name": "Trinity7",
+    "firstLessonMorning": {
+      "reference": "1 Chronicles 21"
+    },
+    "firstLessonEvening": {
+      "reference": "1 Chronicles 22"
+    }
+  },
+  {
+    "name": "Trinity8",
+    "firstLessonMorning": {
+      "reference": "1 Chronicles 29:9-29"
+    },
+    "firstLessonEvening": {
+      "reference": "2 Chronicles 1"
+    }
+  },
+  {
+    "name": "Trinity9",
+    "firstLessonMorning": {
+      "reference": "1 Kings 10:1-25"
+    },
+    "firstLessonEvening": {
+      "reference": "1 Kings 11:1-15"
+    }
+  },
+  {
+    "name": "Trinity10",
+    "firstLessonMorning": {
+      "reference": "1 Kings 12"
+    },
+    "firstLessonEvening": {
+      "reference": "1 Kings 13"
+    }
+  },
+  {
+    "name": "Trinity11",
+    "firstLessonMorning": {
+      "reference": "1 Kings 18"
+    },
+    "firstLessonEvening": {
+      "reference": "1 Kings 19"
+    }
+  },
+  {
+    "name": "Trinity12",
+    "firstLessonMorning": {
+      "reference": "1 Kings 22:41"
+    },
+    "firstLessonEvening": {
+      "reference": "2 Kings 2:1-16"
+    }
+  },
+  {
+    "name": "Trinity13",
+    "firstLessonMorning": {
+      "reference": "2 Kings 5"
+    },
+    "firstLessonEvening": {
+      "reference": "2 Kings 6:1-24"
+    }
+  },
+  {
+    "name": "Trinity14",
+    "firstLessonMorning": {
+      "reference": "2 Kings 9"
+    },
+    "firstLessonEvening": {
+      "reference": "2 Kings 10:1-32"
+    }
+  },
+  {
+    "name": "Trinity15",
+    "firstLessonMorning": {
+      "reference": "2 Kings 18"
+    },
+    "firstLessonEvening": {
+      "reference": "2 Kings 19"
+    }
+  },
+  {
+    "name": "Trinity16",
+    "firstLessonMorning": {
+      "reference": "2 Chronicles 36"
+    },
+    "firstLessonEvening": {
+      "reference": "Nehemiah 1:1-2:9"
+    }
+  },
+  {
+    "name": "Trinity17",
+    "firstLessonMorning": {
+      "reference": "Jeremiah 5"
+    },
+    "firstLessonEvening": {
+      "reference": "Jeremiah 22"
+    }
+  },
+  {
+    "name": "Trinity18",
+    "firstLessonMorning": {
+      "reference": "Jeremiah 36"
+    },
+    "firstLessonEvening": {
+      "reference": "Ezekiel 2"
+    }
+  },
+  {
+    "name": "Trinity19",
+    "firstLessonMorning": {
+      "reference": "Ezekiel 14"
+    },
+    "firstLessonEvening": {
+      "reference": "Ezekiel 18"
+    }
+  },
+  {
+    "name": "Trinity20",
+    "firstLessonMorning": {
+      "reference": "Ezekiel 34"
+    },
+    "firstLessonEvening": {
+      "reference": "Ezekiel 37"
+    }
+  },
+  {
+    "name": "Trinity21",
+    "firstLessonMorning": {
+      "reference": "Daniel 3"
+    },
+    "firstLessonEvening": {
+      "reference": "Daniel 4"
+    }
+  },
+  {
+    "name": "Trinity22",
+    "firstLessonMorning": {
+      "reference": "Daniel 6"
+    },
+    "firstLessonEvening": {
+      "reference": "Daniel 7:9-999"
+    }
+  },
+  {
+    "name": "Trinity23",
+    "firstLessonMorning": {
+      "reference": "Hosea 14"
+    },
+    "firstLessonEvening": {
+      "reference": "Joel 2:1-21"
+    }
+  },
+  {
+    "name": "Trinity24",
+    "firstLessonMorning": {
+      "reference": "Amos 3"
+    },
+    "firstLessonEvening": {
+      "reference": "Amos 5"
+    }
+  },
+  {
+    "name": "Trinity25",
+    "firstLessonMorning": {
+      "reference": "Micah 4:1-5:8"
+    },
+    "firstLessonEvening": {
+      "reference": "Micah 6"
+    }
+  },
+  {
+    "name": "Trinity26",
+    "firstLessonMorning": {
+      "reference": "Habakkuk 2"
+    },
+    "firstLessonEvening": {
+      "reference": "Habakkuk 3"
+    }
+  },
+  {
+    "name": "Trinity27",
+    "firstLessonMorning": {
+      "reference": "Ecclesiastes 11;12"
+    },
+    "firstLessonEvening": {
+      "reference": "Haggai 2:1-10"
+    }
+  }
+]

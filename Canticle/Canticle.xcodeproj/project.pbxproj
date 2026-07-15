@@ -18,7 +18,16 @@
 		177BE2D1B999FCA8378C4CDA /* ezekiel.json in Resources */ = {isa = PBXBuildFile; fileRef = 939396C8D6A17ED78B32B821 /* ezekiel.json */; };
 		19566203888085B84B7E08E8 /* 1kings.json in Resources */ = {isa = PBXBuildFile; fileRef = 9DA253B0BB2D65B32461869E /* 1kings.json */; };
 		1B6F4B2E6BC5BC65651F710D /* ecclesiastes.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DEDD3717C79B3570E953222 /* ecclesiastes.json */; };
-		1C128D9330062F55000AF6C0 /* Canticle.icon in Resources */ = {isa = PBXBuildFile; fileRef = 1C128D9230062F55000AF6C0 /* Canticle.icon */; };
+		EB557F355AE3897BD3F14F91 /* AppIconOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB174C26FEBF8C2074B3272 /* AppIconOption.swift */; };
+		87E6FA78BA6AFB4946378F04 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FED9468F6A205BD4C15E77 /* SettingsView.swift */; };
+		75FC9EB0AD8985A243FEE9D4 /* Icon1.icon in Resources */ = {isa = PBXBuildFile; fileRef = 8EF5479DFC23961777E90DFA /* Icon1.icon */; };
+		C8F9EF8F374BBEE2B12A5EB0 /* Icon2.icon in Resources */ = {isa = PBXBuildFile; fileRef = 4EFBF9BBA168A367BF2A2919 /* Icon2.icon */; };
+		8F2133207EE8D729A88C721E /* Icon3.icon in Resources */ = {isa = PBXBuildFile; fileRef = 34088B92F929CDE7298C5F0F /* Icon3.icon */; };
+		83F2ACF4BEBF7ECBE3722487 /* Icon4.icon in Resources */ = {isa = PBXBuildFile; fileRef = 321DA2FD817B452F62828AE7 /* Icon4.icon */; };
+		08E7682EF4CE5288246A4402 /* Icon5.icon in Resources */ = {isa = PBXBuildFile; fileRef = 56385BBB25A7ECB89400617E /* Icon5.icon */; };
+		9C393B62FC5BB5471EF5400B /* Icon6.icon in Resources */ = {isa = PBXBuildFile; fileRef = DA04BBD3AD7291AD908B3C0A /* Icon6.icon */; };
+		C019D683BD0CC5EEAB792E57 /* Icon7.icon in Resources */ = {isa = PBXBuildFile; fileRef = 0EAD1E5A3FB62E56792A4A60 /* Icon7.icon */; };
+		0BC5FA9E7E9A0EB2F4924146 /* Icon8.icon in Resources */ = {isa = PBXBuildFile; fileRef = F6315DA01A5864A8702F4AF8 /* Icon8.icon */; };
 		1F5AEC8132AFE12616AAE3DA /* ezra.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A195CE56F2C1EBFF0F17D9E /* ezra.json */; };
 		1FF6E4F3F717057FAB73DAF4 /* 1peter.json in Resources */ = {isa = PBXBuildFile; fileRef = 1A1137A766278289682268FC /* 1peter.json */; };
 		21571EAE1F433F71A0E6ABAB /* judith.json in Resources */ = {isa = PBXBuildFile; fileRef = 338F28C9B00C0163BCE24ECD /* judith.json */; };
@@ -147,7 +156,14 @@
 		1A1137A766278289682268FC /* 1peter.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 1peter.json; sourceTree = "<group>"; };
 		1BC8BFA7DA9220A3D55924BE /* genesis.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = genesis.json; sourceTree = "<group>"; };
 		1BF6B174901B58133EA42B7A /* prayerofazariah.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = prayerofazariah.json; sourceTree = "<group>"; };
-		1C128D9230062F55000AF6C0 /* Canticle.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = Canticle.icon; sourceTree = "<group>"; };
+		8EF5479DFC23961777E90DFA /* Icon1.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = Icon1.icon; sourceTree = "<group>"; };
+		4EFBF9BBA168A367BF2A2919 /* Icon2.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = Icon2.icon; sourceTree = "<group>"; };
+		34088B92F929CDE7298C5F0F /* Icon3.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = Icon3.icon; sourceTree = "<group>"; };
+		321DA2FD817B452F62828AE7 /* Icon4.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = Icon4.icon; sourceTree = "<group>"; };
+		56385BBB25A7ECB89400617E /* Icon5.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = Icon5.icon; sourceTree = "<group>"; };
+		DA04BBD3AD7291AD908B3C0A /* Icon6.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = Icon6.icon; sourceTree = "<group>"; };
+		0EAD1E5A3FB62E56792A4A60 /* Icon7.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = Icon7.icon; sourceTree = "<group>"; };
+		F6315DA01A5864A8702F4AF8 /* Icon8.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = Icon8.icon; sourceTree = "<group>"; };
 		1E208BD7662A126B87149216 /* MovableFeasts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovableFeasts.swift; sourceTree = "<group>"; };
 		1E480458FFC15966E0284C13 /* lamentations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = lamentations.json; sourceTree = "<group>"; };
 		22BE33C64755D3981E3F49F1 /* 1corinthians.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 1corinthians.json; sourceTree = "<group>"; };
@@ -178,6 +194,8 @@
 		5FC0C3A7687887F64678EA43 /* romans.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = romans.json; sourceTree = "<group>"; };
 		63D577D7A45540F52C902FE3 /* Office.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Office.swift; sourceTree = "<group>"; };
 		67483CF5EDD7CD92AE3B44D4 /* ScriptureRef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptureRef.swift; sourceTree = "<group>"; };
+		4BB174C26FEBF8C2074B3272 /* AppIconOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconOption.swift; sourceTree = "<group>"; };
+		D5FED9468F6A205BD4C15E77 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		6B6E33141E29B2A264DA83E7 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = manifest.json; sourceTree = "<group>"; };
 		6D25E7D909B99FB16C802286 /* belandthedragon.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = belandthedragon.json; sourceTree = "<group>"; };
 		6D5A3FF4EE93AC06EF524D1D /* 2chronicles.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 2chronicles.json; sourceTree = "<group>"; };
@@ -456,6 +474,7 @@
 				E3BF7044F87D9173E72931AB /* ProperSundayEntry.swift */,
 				248499802594A23A48763FBC /* PsalterCycleEntry.swift */,
 				67483CF5EDD7CD92AE3B44D4 /* ScriptureRef.swift */,
+				4BB174C26FEBF8C2074B3272 /* AppIconOption.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -476,6 +495,7 @@
 				C205DC7418CF3A834BD1BD6E /* ComminationView.swift */,
 				C8BB393BD082969258DA23A3 /* ContentView.swift */,
 				1058215D559CBAAA35ED1956 /* LitanyView.swift */,
+				D5FED9468F6A205BD4C15E77 /* SettingsView.swift */,
 				726B403168F0F7A9B238E2A0 /* Components */,
 			);
 			path = Views;
@@ -484,7 +504,14 @@
 		FA0060087A1C3D42050804ED /* Canticle */ = {
 			isa = PBXGroup;
 			children = (
-				1C128D9230062F55000AF6C0 /* Canticle.icon */,
+				8EF5479DFC23961777E90DFA /* Icon1.icon */,
+				4EFBF9BBA168A367BF2A2919 /* Icon2.icon */,
+				34088B92F929CDE7298C5F0F /* Icon3.icon */,
+				321DA2FD817B452F62828AE7 /* Icon4.icon */,
+				56385BBB25A7ECB89400617E /* Icon5.icon */,
+				DA04BBD3AD7291AD908B3C0A /* Icon6.icon */,
+				0EAD1E5A3FB62E56792A4A60 /* Icon7.icon */,
+				F6315DA01A5864A8702F4AF8 /* Icon8.icon */,
 				099AB505D82B2114706F489C /* Assets.xcassets */,
 				F575BDCF0E6BB017A89C4820 /* Info.plist */,
 				1A4B513ADD049E6E8DA6B473 /* App */,
@@ -635,7 +662,14 @@
 				60D8DCEDE4751711FDE50CDA /* romans.json in Resources */,
 				C034EE770C6C47A668C36BC3 /* ruth.json in Resources */,
 				6FA46159341E8FB0F904B4A8 /* songofsolomon.json in Resources */,
-				1C128D9330062F55000AF6C0 /* Canticle.icon in Resources */,
+				75FC9EB0AD8985A243FEE9D4 /* Icon1.icon in Resources */,
+				C8F9EF8F374BBEE2B12A5EB0 /* Icon2.icon in Resources */,
+				8F2133207EE8D729A88C721E /* Icon3.icon in Resources */,
+				83F2ACF4BEBF7ECBE3722487 /* Icon4.icon in Resources */,
+				08E7682EF4CE5288246A4402 /* Icon5.icon in Resources */,
+				9C393B62FC5BB5471EF5400B /* Icon6.icon in Resources */,
+				C019D683BD0CC5EEAB792E57 /* Icon7.icon in Resources */,
+				0BC5FA9E7E9A0EB2F4924146 /* Icon8.icon in Resources */,
 				70839AD8581B26153CB88966 /* susanna.json in Resources */,
 				6FCECD2415F4FFB3D4466EF5 /* titus.json in Resources */,
 				B434EC0FF786B68598539494 /* tobit.json in Resources */,
@@ -680,6 +714,8 @@
 				F5D6E3D68BD8F42141721E87 /* PsalterCycleEntry.swift in Sources */,
 				339DDD3B72E82416898A9B7A /* PsalterStore.swift in Sources */,
 				A51B6C3B436A7E9D3A820CB7 /* ScriptureRef.swift in Sources */,
+				EB557F355AE3897BD3F14F91 /* AppIconOption.swift in Sources */,
+				87E6FA78BA6AFB4946378F04 /* SettingsView.swift in Sources */,
 				688213075B2E75555C8E11A5 /* Theme.swift in Sources */,
 				9887C7C2C9C31405BE83EF17 /* TimeOfDayService.swift in Sources */,
 			);
@@ -691,7 +727,9 @@
 		09661B7D2082F601B0AB2921 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = Canticle;
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "Icon2 Icon3 Icon4 Icon5 Icon6 Icon7 Icon8";
+				ASSETCATALOG_COMPILER_APPICON_NAME = Icon1;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -837,7 +875,9 @@
 		9B744F30DBC450F92FF6F14E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = Canticle;
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "Icon2 Icon3 Icon4 Icon5 Icon6 Icon7 Icon8";
+				ASSETCATALOG_COMPILER_APPICON_NAME = Icon1;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;

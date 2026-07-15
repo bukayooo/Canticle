@@ -4,6 +4,9 @@ struct ContentView: View {
     @StateObject private var viewModel = DevotionalViewModel()
     @Environment(\.scenePhase) private var scenePhase
 
+    @State private var isSettingsButtonVisible = true
+    @State private var hideSettingsButtonTask: Task<Void, Never>?
+
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -36,25 +39,56 @@ struct ContentView: View {
                 .padding(.horizontal, 20)
                 .padding(.bottom, 40)
             }
+            .simultaneousGesture(
+                DragGesture(minimumDistance: 0)
+                    .onChanged { _ in handleScrollActivity() }
+            )
             .background(Theme.parchment.ignoresSafeArea())
             .onChange(of: scenePhase) { _, newPhase in
                 if newPhase == .active {
                     viewModel.refresh()
                 }
             }
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Menu {
-                        NavigationLink("The Litany") { LitanyView() }
-                        NavigationLink("A Commination") { ComminationView() }
+            .overlay(alignment: .topTrailing) {
+                if isSettingsButtonVisible {
+                    NavigationLink {
+                        SettingsView()
                     } label: {
-                        Image(systemName: "book.closed")
+                        Image(systemName: "gearshape.fill")
+                            .font(.system(.body, design: .serif).weight(.semibold))
+                            .foregroundStyle(Theme.gold)
+                            .padding(12)
+                            .background(.ultraThinMaterial, in: Circle())
+                            .overlay(Circle().strokeBorder(Theme.gold.opacity(0.4), lineWidth: 1))
                     }
+                    .padding(.top, 8)
+                    .padding(.trailing, 16)
+                    .transition(.opacity)
                 }
             }
             #if DEBUG
             .safeAreaInset(edge: .bottom) { debugOfficeSwitcher }
             #endif
+        }
+    }
+
+    private func handleScrollActivity() {
+        if !isSettingsButtonVisible {
+            withAnimation(.easeOut(duration: 0.2)) {
+                isSettingsButtonVisible = true
+            }
+        }
+        scheduleSettingsButtonHide()
+    }
+
+    private func scheduleSettingsButtonHide() {
+        hideSettingsButtonTask?.cancel()
+        hideSettingsButtonTask = Task {
+            try? await Task.sleep(nanoseconds: 1_500_000_000)
+            guard !Task.isCancelled else { return }
+            withAnimation(.easeInOut(duration: 0.4)) {
+                isSettingsButtonVisible = false
+            }
         }
     }
 

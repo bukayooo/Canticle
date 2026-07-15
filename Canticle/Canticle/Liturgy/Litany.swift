@@ -56,7 +56,7 @@ enum Litany {
         .response("We beseech thee to hear us, good Lord."),
         .versicle("That it may please thee to illuminate all Bishops, Priests, and Deacons, with true knowledge and understanding of thy Word; and that both by their preaching and living they may set it forth, and show it accordingly;"),
         .response("We beseech thee to hear us, good Lord."),
-        .versicle("That it may please thee to endue the President’s Cabinet, the Congress,and all in authority under him, with grace, wisdom, and understanding;"),
+        .versicle("That it may please thee to endue the President’s Cabinet, the Congress, and all in authority under him, with grace, wisdom, and understanding;"),
         .response("We beseech thee to hear us, good Lord."),
         .versicle("That it may please thee to bless and keep the judges and magistrates, giving them grace to execute justice, and to maintain truth;"),
         .response("We beseech thee to hear us, good Lord."),

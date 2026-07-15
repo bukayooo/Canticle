@@ -1,0 +1,29 @@
+{
+  "fill" : {
+    "solid" : "display-p3:0.86572,0.19934,0.13696,1.00000"
+  },
+  "groups" : [
+    {
+      "layers" : [
+        {
+          "image-name" : "Jerusalem Cross gold.png",
+          "name" : "Jerusalem Cross gold"
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "circles" : [
+      "watchOS"
+    ],
+    "squares" : "shared"
+  }
+}

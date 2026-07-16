@@ -2,10 +2,18 @@ import SwiftUI
 
 @main
 struct CanticleApp: App {
+    @State private var isSplashVisible = true
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .preferredColorScheme(nil) // follow system; theme adapts light/dark
+            ZStack {
+                ContentView()
+                if isSplashVisible {
+                    SplashView { isSplashVisible = false }
+                        .zIndex(1)
+                }
+            }
+            .preferredColorScheme(nil) // follow system; theme adapts light/dark
         }
     }
 }

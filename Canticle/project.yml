@@ -81,6 +81,7 @@ targets:
         CFBundleDisplayName: Canticle
         UILaunchScreen:
           UIColorName: AccentColor
+          UIImageName: LaunchCross
         UISupportedInterfaceOrientations:
           - UIInterfaceOrientationPortrait
         UIUserInterfaceStyle: Automatic

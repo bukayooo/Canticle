@@ -102,6 +102,7 @@
 		B82BF78CCACF3E044A94A328 /* hebrews.json in Resources */ = {isa = PBXBuildFile; fileRef = 12AB65CE2D8117E6738EBD76 /* hebrews.json */; };
 		BEC48CC97F95267E9DB8856D /* 2peter.json in Resources */ = {isa = PBXBuildFile; fileRef = F786D9608E86F7EB4176D641 /* 2peter.json */; };
 		C034EE770C6C47A668C36BC3 /* ruth.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F7BA3E7AB49FBDB9DDE0D6A /* ruth.json */; };
+		C16A3E8ADEA8A29034A4CCA0 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F9EE4F4F737084DEAA559 /* SplashView.swift */; };
 		C193C3BCDA2E0590098365D6 /* Office.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D577D7A45540F52C902FE3 /* Office.swift */; };
 		C2DC86AC83A06CD2D918522F /* DevotionalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C7EBD3435E8CF1F1B4E03D /* DevotionalViewModel.swift */; };
 		C38510ABEC757557174211E6 /* ephesians.json in Resources */ = {isa = PBXBuildFile; fileRef = 05C28F73C28423C884675C83 /* ephesians.json */; };
@@ -150,6 +151,7 @@
 		0DA59C8488BF5A9A8DDE20AA /* job.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = job.json; sourceTree = "<group>"; };
 		1058215D559CBAAA35ED1956 /* LitanyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LitanyView.swift; sourceTree = "<group>"; };
 		10EC96262CF4A9394745AB16 /* 1samuel.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 1samuel.json; sourceTree = "<group>"; };
+		115F9EE4F4F737084DEAA559 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		12AB65CE2D8117E6738EBD76 /* hebrews.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hebrews.json; sourceTree = "<group>"; };
 		1436C8D664489D96B6D87EB1 /* 2timothy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 2timothy.json; sourceTree = "<group>"; };
 		14CC23BEE9F311FEE3AD1273 /* proper_sundays.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = proper_sundays.json; sourceTree = "<group>"; };
@@ -445,6 +447,7 @@
 				7BE83DCE6C362682810B5F76 /* CrusaderCrossShape.swift */,
 				8169E3F038998DF0DAE3B723 /* DailyContentViews.swift */,
 				172453860BAF23E76515713E /* LiturgyItemView.swift */,
+				115F9EE4F4F737084DEAA559 /* SplashView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -733,6 +736,7 @@
 				339DDD3B72E82416898A9B7A /* PsalterStore.swift in Sources */,
 				A51B6C3B436A7E9D3A820CB7 /* ScriptureRef.swift in Sources */,
 				7FF9853D9DF90250E5123EE5 /* SettingsView.swift in Sources */,
+				C16A3E8ADEA8A29034A4CCA0 /* SplashView.swift in Sources */,
 				688213075B2E75555C8E11A5 /* Theme.swift in Sources */,
 				9887C7C2C9C31405BE83EF17 /* TimeOfDayService.swift in Sources */,
 			);

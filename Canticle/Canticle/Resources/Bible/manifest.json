@@ -466,97 +466,97 @@
     "slug": "tobit",
     "chapterCount": 14,
     "isApocrypha": true,
-    "hasOriginalLanguage": false
+    "hasOriginalLanguage": true
   },
   {
     "book": "Judith",
     "slug": "judith",
     "chapterCount": 16,
     "isApocrypha": true,
-    "hasOriginalLanguage": false
+    "hasOriginalLanguage": true
   },
   {
     "book": "Additions to Esther",
     "slug": "additionstoesther",
     "chapterCount": 7,
     "isApocrypha": true,
-    "hasOriginalLanguage": false
+    "hasOriginalLanguage": true
   },
   {
     "book": "Wisdom of Solomon",
     "slug": "wisdomofsolomon",
     "chapterCount": 19,
     "isApocrypha": true,
-    "hasOriginalLanguage": false
+    "hasOriginalLanguage": true
   },
   {
     "book": "Ecclesiasticus",
     "slug": "ecclesiasticus",
     "chapterCount": 51,
     "isApocrypha": true,
-    "hasOriginalLanguage": false
+    "hasOriginalLanguage": true
   },
   {
     "book": "Baruch",
     "slug": "baruch",
     "chapterCount": 6,
     "isApocrypha": true,
-    "hasOriginalLanguage": false
+    "hasOriginalLanguage": true
   },
   {
     "book": "Prayer of Azariah",
     "slug": "prayerofazariah",
     "chapterCount": 1,
     "isApocrypha": true,
-    "hasOriginalLanguage": false
+    "hasOriginalLanguage": true
   },
   {
     "book": "Susanna",
     "slug": "susanna",
     "chapterCount": 1,
     "isApocrypha": true,
-    "hasOriginalLanguage": false
+    "hasOriginalLanguage": true
   },
   {
     "book": "Bel and the Dragon",
     "slug": "belandthedragon",
     "chapterCount": 1,
     "isApocrypha": true,
-    "hasOriginalLanguage": false
+    "hasOriginalLanguage": true
   },
   {
     "book": "1 Maccabees",
     "slug": "1maccabees",
     "chapterCount": 16,
     "isApocrypha": true,
-    "hasOriginalLanguage": false
+    "hasOriginalLanguage": true
   },
   {
     "book": "2 Maccabees",
     "slug": "2maccabees",
     "chapterCount": 15,
     "isApocrypha": true,
-    "hasOriginalLanguage": false
+    "hasOriginalLanguage": true
   },
   {
     "book": "1 Esdras",
     "slug": "1esdras",
     "chapterCount": 9,
     "isApocrypha": true,
-    "hasOriginalLanguage": false
+    "hasOriginalLanguage": true
   },
   {
     "book": "Prayer of Manasseh",
     "slug": "prayerofmanasseh",
     "chapterCount": 1,
     "isApocrypha": true,
-    "hasOriginalLanguage": false
+    "hasOriginalLanguage": true
   },
   {
     "book": "2 Esdras",
     "slug": "2esdras",
     "chapterCount": 16,
     "isApocrypha": true,
-    "hasOriginalLanguage": false
+    "hasOriginalLanguage": true
   }
 ]

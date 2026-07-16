@@ -1,25 +1,39 @@
 #!/usr/bin/env python3
-"""One-off conversion of the OpenScriptures Hebrew Bible (OSIS XML) and
-MorphGNT/SBLGNT (tab-delimited txt) source corpora into per-book JSON files
-matching the app's existing Bible JSON schema, so they can be bundled as an
-"original languages" alternative to the KJV/AV English text.
+"""One-off conversion of the OpenScriptures Hebrew Bible (OSIS XML), MorphGNT/
+SBLGNT (tab-delimited txt), CCAT/CATSS morphologically-tagged Septuagint
+(Beta Code .mlxx), and the Vulgate's Latin 2 Esdras (scraped from vulgate.org)
+into per-book JSON files matching the app's existing Bible JSON schema, so
+they can be bundled as an "original languages" alternative to the KJV/AV
+English text.
 
 Not part of the app build - run manually whenever the source corpora change:
 
     python3 Scripts/convert_original_language_bible.py
 
+Requires: pip install betacode pygtrie
+
 Reads:
     ~/Downloads/Old Testament/*.xml       (OSIS, Westminster Leningrad Codex)
     ~/Downloads/New Testament/*-morphgnt.txt
+    https://ccat.sas.upenn.edu/gopher/text/religion/biblical/lxxmorph/*.mlxx (cached locally)
+    https://vulgate.org/ot/4esdras_*.htm (cached locally)
 
 Writes:
     Canticle/Canticle/Canticle/Resources/BibleOriginal/<slug>.json
 """
+import html
 import json
 import re
 import sys
+import tempfile
+import urllib.request
 import xml.etree.ElementTree as ET
 from pathlib import Path
+
+try:
+    import betacode.conv as betacode
+except ImportError:
+    sys.exit("Missing dependency - run: pip install betacode pygtrie")
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 BIBLE_DIR = REPO_ROOT / "Canticle/Canticle/Resources/Bible"
@@ -27,6 +41,27 @@ OUTPUT_DIR = REPO_ROOT / "Canticle/Canticle/Resources/BibleOriginal"
 PSALTER_DIR = REPO_ROOT / "Canticle/Canticle/Resources/Psalter"
 OT_SOURCE_DIR = Path.home() / "Downloads/Old Testament"
 NT_SOURCE_DIR = Path.home() / "Downloads/New Testament"
+CACHE_DIR = Path(tempfile.gettempdir()) / "canticle_apocrypha_cache"
+CCAT_BASE_URL = "https://ccat.sas.upenn.edu/gopher/text/religion/biblical/lxxmorph/"
+VULGATE_BASE_URL = "https://vulgate.org/ot/"
+
+# Apocrypha books whose Greek text is a single, ordinary .mlxx file - no
+# recombination or verse-slicing needed beyond the generic parser. Tobit uses
+# the Vaticanus/Alexandrinus recension (the shorter text-form that actually
+# circulated as "the" Greek Bible historically) over the longer Sinaiticus
+# text; Susanna and Bel and the Dragon use Theodotion's translation (the one
+# that became liturgically standard) over the Old Greek.
+APOCRYPHA_LXX_BOOKS = {
+    "Tobit": "22.TobitBA.mlxx",
+    "Judith": "21.Judith.mlxx",
+    "Wisdom of Solomon": "35.Wisdom.mlxx",
+    "Ecclesiasticus": "36.Sirach.mlxx",
+    "Susanna": "64.SusTh.mlxx",
+    "Bel and the Dragon": "60.BelTh.mlxx",
+    "1 Maccabees": "24.1Macc.mlxx",
+    "2 Maccabees": "25.2Macc.mlxx",
+    "1 Esdras": "18.1Esdras.mlxx",
+}
 
 OSIS_BOOK_TO_CANONICAL = {
     "Gen": "Genesis", "Exod": "Exodus", "Lev": "Leviticus", "Num": "Numbers",
@@ -347,6 +382,205 @@ def group_into_book_json(verses):
     return books
 
 
+def fetch_cached(url, cache_name):
+    """Downloads url on first use and caches it under CACHE_DIR, so repeated
+    script runs (e.g. while iterating on parsing logic) don't re-fetch."""
+    CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    cache_path = CACHE_DIR / cache_name
+    if not cache_path.exists():
+        request = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(request) as response:
+            cache_path.write_bytes(response.read())
+    return cache_path
+
+
+def parse_mlxx_verses(path):
+    """Parses a CCAT/CATSS .mlxx file (verse-marker line "BookAbbrev Ch:V",
+    then one word per line with the Beta-Code word as the first
+    whitespace-separated column) into {(chapter, verse): unicode_text}.
+    Single-chapter books (e.g. the Epistle of Jeremiah) mark verses as plain
+    "BookAbbrev V" with no chapter number at all - treated as chapter 1.
+    Unlike MorphGNT, this corpus carries no punctuation at all - verses are
+    plain space-joined word streams."""
+    verses = {}
+    chapter = verse = None
+    words = []
+
+    def flush():
+        if chapter is not None and words:
+            verses[(chapter, verse)] = " ".join(words)
+
+    with open(path, encoding="utf-8") as f:
+        for line in f:
+            line = line.rstrip("\n")
+            if not line.strip():
+                continue
+            m = re.match(r"^[A-Za-z0-9]+ (\d+):(\d+)$", line) or re.match(r"^[A-Za-z0-9]+ (\d+)()$", line)
+            if m:
+                flush()
+                chapter, verse = (int(m.group(1)), int(m.group(2))) if m.group(2) else (1, int(m.group(1)))
+                words = []
+                continue
+            beta_word = line.split()[0]
+            words.append(betacode.beta_to_uni(beta_word))
+    flush()
+    return verses
+
+
+def verses_to_chapter_list(verses, renumber_as_single_chapter=False):
+    """Groups a {(chapter, verse): text} dict into the app's chapter/verse
+    JSON shape. If renumber_as_single_chapter is set, the dict is emitted as
+    a single chapter 1 in (chapter, verse) order, starting at verse 1 -
+    used for extracted sub-passages (Prayer of Azariah, Prayer of Manasseh)
+    that don't keep their host book's own numbering."""
+    if renumber_as_single_chapter:
+        ordered = sorted(verses.items())
+        return [{"chapter": 1, "verses": [text for _, text in ordered]}]
+
+    by_chapter = {}
+    for (chapter, verse), text in verses.items():
+        by_chapter.setdefault(chapter, {})[verse] = text
+    chapter_list = []
+    for chapter_num in sorted(by_chapter):
+        verse_map = by_chapter[chapter_num]
+        max_verse = max(verse_map)
+        verse_list = [verse_map.get(v, "") for v in range(1, max_verse + 1)]
+        chapter_list.append({"chapter": chapter_num, "verses": verse_list})
+    return chapter_list
+
+
+def convert_simple_lxx_book(filename):
+    path = fetch_cached(CCAT_BASE_URL + filename, filename)
+    verses = parse_mlxx_verses(path)
+    return verses_to_chapter_list(verses)
+
+
+def convert_baruch():
+    baruch_path = fetch_cached(CCAT_BASE_URL + "54.Baruch.mlxx", "54.Baruch.mlxx")
+    epjer_path = fetch_cached(CCAT_BASE_URL + "55.EpJer.mlxx", "55.EpJer.mlxx")
+    verses = parse_mlxx_verses(baruch_path)
+    epjer_verses = parse_mlxx_verses(epjer_path)
+    # The Epistle of Jeremiah is bundled as Baruch chapter 6 in the standalone
+    # English book; the source treats it as its own single-chapter work, so
+    # renumber its own chapter to 6, keeping its verse numbers as-is.
+    for (_, verse), text in epjer_verses.items():
+        verses[(6, verse)] = text
+    return verses_to_chapter_list(verses)
+
+
+def convert_prayer_of_azariah():
+    path = fetch_cached(CCAT_BASE_URL + "62.DanielTh.mlxx", "62.DanielTh.mlxx")
+    verses = parse_mlxx_verses(path)
+    # The Prayer of Azariah and Song of the Three Young Men is inserted into
+    # Theodotion's Daniel 3 between the Hebrew/Aramaic's verses 23 and 24;
+    # verified against the existing English text that it runs 3:24-3:90
+    # (67 verses) and renumbers as its own chapter 1, verses 1-67.
+    extracted = {(3, v): t for (c, v), t in verses.items() if c == 3 and 24 <= v <= 90}
+    return verses_to_chapter_list(extracted, renumber_as_single_chapter=True)
+
+
+def convert_prayer_of_manasseh():
+    path = fetch_cached(CCAT_BASE_URL + "30.Odes.mlxx", "30.Odes.mlxx")
+    verses = parse_mlxx_verses(path)
+    # The Prayer of Manasseh is Ode 12 in the Odes appendix that follows
+    # Psalms in Septuagint manuscripts; the Odes file uses "Od N:V" verse
+    # markers matching the general "Chapter:Verse" parser, with "Od" as the
+    # book abbreviation and 12 as the chapter number.
+    extracted = {(12, v): t for (c, v), t in verses.items() if c == 12}
+    return verses_to_chapter_list(extracted, renumber_as_single_chapter=True)
+
+
+def parse_esther_lettered_verses(path):
+    """Like parse_mlxx_verses, but keyed by (chapter, verse, letter) so the
+    Additions' lettered sub-verses (e.g. "Esth 1:1a") aren't collapsed onto
+    their base verse number - ordinary verses get letter=""."""
+    verses = {}
+    key = None
+    words = []
+
+    def flush():
+        if key is not None and words:
+            verses[key] = " ".join(words)
+
+    with open(path, encoding="utf-8") as f:
+        for line in f:
+            line = line.rstrip("\n")
+            if not line.strip():
+                continue
+            m = re.match(r"^Esth (\d+):(\d+)([a-z]?)$", line)
+            if m:
+                flush()
+                key = (int(m.group(1)), int(m.group(2)), m.group(3))
+                words = []
+                continue
+            beta_word = line.split()[0]
+            words.append(betacode.beta_to_uni(beta_word))
+    flush()
+    return verses
+
+
+def convert_additions_to_esther():
+    """The six Additions survive only interspersed within the Greek Esther,
+    marked with lettered sub-verses (e.g. 1:1a-1:1s for Addition A). The
+    standalone English "Additions to Esther" instead uses a Vulgate-era
+    convention (chapters 10-16) that isn't reproduced here: counting both
+    texts shows 89 Greek lettered verses against 104 English verses, a real
+    split-differently mismatch rather than just a numbering-label difference
+    (investigated and confirmed - see conversation/commit history), so
+    forcing alignment would risk silently misattributing verses. Nothing in
+    this app cites "Additions to Esther" by chapter:verse (the lectionary
+    only ever references canonical Esther, and there's no general
+    Bible-browsing view), so there's no functional requirement to match the
+    English numbering - this instead emits the six Additions as their own
+    chapters, in the order they appear in the Greek text, each using its own
+    natural lettered-verse sequence."""
+    path = fetch_cached(CCAT_BASE_URL + "20.Esther.mlxx", "20.Esther.mlxx")
+    verses = parse_esther_lettered_verses(path)
+
+    # (anchor chapter, anchor verse) pairs marking where each Addition's
+    # lettered verses are attached; Addition D is unique in spanning two
+    # anchors (5:1 and 5:2).
+    additions = [
+        [(1, 1)],   # A - prologue before ch.1 (Mordecai's dream)
+        [(3, 13)],  # B - the king's decree, within ch.3
+        [(4, 17)],  # C - Mordecai's and Esther's prayers, within ch.4
+        [(5, 1), (5, 2)],  # D - Esther's audience with the king, within ch.5
+        [(8, 12)],  # E - the king's second decree, within ch.8
+        [(10, 3)],  # F - colophon / interpretation of the dream, after ch.10
+    ]
+
+    chapter_list = []
+    for chapter_num, anchors in enumerate(additions, start=1):
+        ordered = sorted(
+            (verse, letter, text)
+            for (chapter, verse, letter), text in verses.items()
+            if letter and (chapter, verse) in anchors
+        )
+        chapter_list.append({"chapter": chapter_num, "verses": [text for _, _, text in ordered]})
+    return chapter_list
+
+
+def convert_latin_2esdras():
+    chapter_list = []
+    for chapter_num in range(1, 17):
+        filename = f"4esdras_{chapter_num}.htm"
+        path = fetch_cached(VULGATE_BASE_URL + filename, filename)
+        page = path.read_text(encoding="utf-8", errors="replace")
+        matches = re.findall(
+            r'<SUP class="Vulgate">(\d+)</SUP>.*?<span class="Latin">(.*?)</span>',
+            page,
+            re.DOTALL,
+        )
+        verse_map = {}
+        for verse_str, raw_text in matches:
+            text = html.unescape(" ".join(raw_text.split()))
+            verse_map[int(verse_str)] = text
+        max_verse = max(verse_map)
+        verse_list = [verse_map.get(v, "") for v in range(1, max_verse + 1)]
+        chapter_list.append({"chapter": chapter_num, "verses": verse_list})
+    return chapter_list
+
+
 def convert_nt_book(txt_path):
     verses = {}
     with open(txt_path, encoding="utf-8") as f:
@@ -387,6 +621,20 @@ def sanity_check(canonical_name, chapter_list, manifest_entry, warnings):
                 f"{canonical_name} {c['chapter']}: produced {len(c['verses'])} verses, "
                 f"English text has {expected}"
             )
+
+
+def write_book(canonical_name, chapter_list, manifest, warnings, skip_sanity_check=False):
+    entry = manifest.get(canonical_name)
+    if entry is None:
+        warnings.append(f"no manifest entry for book {canonical_name!r}, skipping")
+        return
+    if not skip_sanity_check:
+        sanity_check(canonical_name, chapter_list, entry, warnings)
+    book_json = {"book": canonical_name, "chapters": chapter_list}
+    out_path = OUTPUT_DIR / f"{entry['slug']}.json"
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump(book_json, f, ensure_ascii=False)
+    print(f"  wrote {out_path.name}")
 
 
 def main():
@@ -430,6 +678,20 @@ def main():
         with open(out_path, "w", encoding="utf-8") as f:
             json.dump(book_json, f, ensure_ascii=False)
         print(f"  wrote {out_path.name}")
+
+    print("Converting Apocrypha (Greek Septuagint + Latin 2 Esdras)...")
+    for canonical_name, filename in APOCRYPHA_LXX_BOOKS.items():
+        write_book(canonical_name, convert_simple_lxx_book(filename), manifest, warnings)
+    write_book("Baruch", convert_baruch(), manifest, warnings)
+    write_book("Prayer of Azariah", convert_prayer_of_azariah(), manifest, warnings)
+    write_book("Prayer of Manasseh", convert_prayer_of_manasseh(), manifest, warnings)
+    write_book("2 Esdras", convert_latin_2esdras(), manifest, warnings)
+    # Deliberately renumbered (see convert_additions_to_esther docstring) -
+    # comparing against the English chapters 10-16 would just produce noisy,
+    # meaningless warnings since the two numbering schemes don't correspond.
+    write_book(
+        "Additions to Esther", convert_additions_to_esther(), manifest, warnings, skip_sanity_check=True
+    )
 
     print("Converting Psalter (Hebrew, natural verse divisions)...")
     psalms = convert_hebrew_psalter(OT_SOURCE_DIR / "Ps.xml", warnings)

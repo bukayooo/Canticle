@@ -4,9 +4,56 @@ import UIKit
 struct SettingsView: View {
     @State private var currentIconName: String? = UIApplication.shared.alternateIconName
     @ObservedObject private var bibleStore = BibleStore.shared
+    @ObservedObject private var notificationService = NotificationService.shared
 
     var body: some View {
         List {
+            Section {
+                Toggle(isOn: $notificationService.morningReminderEnabled) {
+                    Text("Morning Prayer")
+                        .font(Typography.body)
+                        .foregroundStyle(Theme.primaryText)
+                }
+                .tint(Theme.crimson)
+                .listRowBackground(Theme.parchmentPanel)
+
+                if notificationService.morningReminderEnabled {
+                    DatePicker(
+                        "Time",
+                        selection: $notificationService.morningReminderTime,
+                        displayedComponents: .hourAndMinute
+                    )
+                    .font(Typography.body)
+                    .foregroundStyle(Theme.primaryText)
+                    .tint(Theme.crimson)
+                    .listRowBackground(Theme.parchmentPanel)
+                }
+
+                Toggle(isOn: $notificationService.eveningReminderEnabled) {
+                    Text("Evening Prayer")
+                        .font(Typography.body)
+                        .foregroundStyle(Theme.primaryText)
+                }
+                .tint(Theme.crimson)
+                .listRowBackground(Theme.parchmentPanel)
+
+                if notificationService.eveningReminderEnabled {
+                    DatePicker(
+                        "Time",
+                        selection: $notificationService.eveningReminderTime,
+                        displayedComponents: .hourAndMinute
+                    )
+                    .font(Typography.body)
+                    .foregroundStyle(Theme.primaryText)
+                    .tint(Theme.crimson)
+                    .listRowBackground(Theme.parchmentPanel)
+                }
+            } header: {
+                Text("Reminders")
+                    .font(Typography.caption)
+                    .foregroundStyle(Theme.secondaryText)
+            }
+
             Section {
                 Toggle(isOn: $bibleStore.useOriginalLanguages) {
                     Text("Original Languages")
@@ -20,7 +67,7 @@ struct SettingsView: View {
                     .font(Typography.caption)
                     .foregroundStyle(Theme.secondaryText)
             }
-            
+
             Section {
                 ForEach(AppIconOption.all) { option in
                     Button {

@@ -574,6 +574,12 @@ def convert_latin_2esdras():
         verse_map = {}
         for verse_str, raw_text in matches:
             text = html.unescape(" ".join(raw_text.split()))
+            # vulgate.org's own HTML occasionally has a stray space before
+            # verse-final punctuation (e.g. "disciplina ." instead of
+            # "disciplina.") - confirmed against an independent transcription
+            # (CCEL) that no word is actually missing there, just a formatting
+            # quirk in this source, so it's safe to collapse generically.
+            text = re.sub(r"\s+([:;,.!?])", r"\1", text)
             verse_map[int(verse_str)] = text
         max_verse = max(verse_map)
         verse_list = [verse_map.get(v, "") for v in range(1, max_verse + 1)]

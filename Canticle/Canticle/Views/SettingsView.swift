@@ -9,7 +9,7 @@ struct SettingsView: View {
         List {
             Section {
                 Toggle(isOn: $bibleStore.useOriginalLanguages) {
-                    Text("Original Languages (Hebrew & Greek)")
+                    Text("Original Languages")
                         .font(Typography.body)
                         .foregroundStyle(Theme.primaryText)
                 }
@@ -19,12 +19,8 @@ struct SettingsView: View {
                 Text("Bible Text")
                     .font(Typography.caption)
                     .foregroundStyle(Theme.secondaryText)
-            } footer: {
-                Text("Shows the Old and New Testaments in Hebrew and Koine Greek instead of the King James Version. The Apocrypha remains in English, as no original-language text for it is available.")
-                    .font(Typography.caption)
-                    .foregroundStyle(Theme.secondaryText)
             }
-
+            
             Section {
                 ForEach(AppIconOption.all) { option in
                     Button {

@@ -39,27 +39,48 @@ xcodebuild -scheme Canticle -configuration Debug \
 There is no test target/scheme in this project (no XCTest files, nothing under `schemes:` for
 testing in `project.yml`) — don't invent a `xcodebuild test` invocation.
 
-**⚠️ Known landmine**: `Resources/BibleOriginal` was made a genuine Xcode *folder reference* (blue
-folder, `lastKnownFileType = folder`) by hand-scripting `project.pbxproj` directly with the
-`xcodeproj` Ruby gem, mirroring how `Canticle.icon` is declared in `project.yml` (`type: folder`).
-This was necessary because `Resources/Bible` and `Resources/BibleOriginal` contain files with
-identical basenames (e.g. both have a `genesis.json`) — XcodeGen's default enumeration flattens a
-resource directory's files into the bundle root, which makes two same-named files collide
-("Multiple commands produce .../genesis.json"). **`project.yml` was never updated to declare
-`BibleOriginal` with `type: folder`**, so running `xcodegen generate` will very likely regenerate it
-as flat individual file references and reintroduce that exact collision. If you need to touch
-`project.yml` or regenerate the project, either add a `type: folder` entry for `BibleOriginal`
-first (see the `Canticle.icon` entry for the pattern) or verify the collision doesn't resurface
-before shipping.
+**`Resources/BibleOriginal` and the eight `Icon1.icon`–`Icon8.icon` bundles are genuine Xcode
+*folder references*** (blue folders, `type: folder` in `project.yml`), each paired with an
+`excludes` entry on its containing directory's `sources:`/`resources:` entry (the generic top-level
+`- path: Canticle` entry *and* the sibling `Canticle/Resources` entry both need the exclude — a
+directory declared as its own `sources:`/`resources:` entry is not automatically deduped against an
+overlapping parent entry in the same list). This is required because `Resources/Bible` and
+`Resources/BibleOriginal` share basenames (both have a `genesis.json`), and each `Icon*.icon`
+bundle's internal `Assets/*.png` files can share names across bundles — without the folder
+reference + excludes, XcodeGen's default enumeration flattens everything to the bundle root and
+same-named files collide ("Multiple commands produce .../genesis.json"). If you add another
+directory that needs `type: folder` treatment, exclude it from every overlapping parent entry the
+same way, then verify with a duplicate-reference check (search the generated `.pbxproj` for `in
+Resources */,` / `in Sources */,` lines and confirm no filename appears twice) before shipping.
+
+**⚠️ Known landmine**: XcodeGen 2.43.0 predates Xcode's Icon Composer feature and has no extension
+mapping for `.icon` bundles, so `type: folder` on `Icon1.icon`–`Icon8.icon` produces the generic
+`lastKnownFileType = folder` instead of the `folder.iconcomposer.icon` UTI that `actool` requires to
+recognize them as app-icon sources. Without the correct UTI the build fails at
+`CompileAssetCatalogVariant` with `"None of the input catalogs contained a matching ... app icon set
+... named Icon1."` **After every `xcodegen generate`, also run**:
+
+```bash
+ruby Scripts/fix_icon_composer_file_types.rb
+```
+
+This patches the UTI back via the `xcodeproj` gem; it's idempotent and safe to re-run. `project.yml`
+also can't express `DEVELOPMENT_TEAM` or the real `PRODUCT_BUNDLE_IDENTIFIER` drifting if someone
+changes code signing from Xcode's GUI (which writes straight to `project.pbxproj`, bypassing
+`project.yml`) — if you change signing in Xcode, mirror the change into `project.yml`'s
+`settings.base`, or the next `xcodegen generate` will silently revert it and the next build will
+install as a second, separately-identified app instead of updating the existing one.
 
 Useful one-off scripts under `Scripts/` (not part of the app build, not run automatically):
 - `convert_original_language_bible.py` — regenerates all of `Resources/BibleOriginal` (Hebrew OT,
   Greek NT, Greek/Latin Apocrypha) from source corpora. Requires `pip install betacode pygtrie`.
   Reads from `~/Downloads/Old Testament`/`~/Downloads/New Testament` and fetches/caches the
   Septuagint (CCAT/CATSS) and Latin 2 Esdras (vulgate.org) over the network.
-- `add_bible_original_to_xcodeproj.rb` — the one-off script that added the `BibleOriginal` folder
-  reference described above; not idempotent/re-runnable as-is (it raises if the reference already
-  exists).
+- `add_bible_original_to_xcodeproj.rb` — the one-off script that originally added the
+  `BibleOriginal` folder reference by hand, before `project.yml` was updated to express it
+  natively; kept for history, not needed for a normal `xcodegen generate` anymore.
+- `fix_icon_composer_file_types.rb` — required after every `xcodegen generate`; see the landmine
+  above.
 
 ## Architecture
 

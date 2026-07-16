@@ -17,21 +17,60 @@ targets:
     deploymentTarget: "17.0"
     sources:
       - path: Canticle
-      - path: Canticle.icon
+        excludes:
+          - "Icon1.icon"
+          - "Icon2.icon"
+          - "Icon3.icon"
+          - "Icon4.icon"
+          - "Icon5.icon"
+          - "Icon6.icon"
+          - "Icon7.icon"
+          - "Icon8.icon"
+          - "Resources/BibleOriginal"
+      - path: Canticle/Icon1.icon
+        buildPhase: resources
+        type: folder
+      - path: Canticle/Icon2.icon
+        buildPhase: resources
+        type: folder
+      - path: Canticle/Icon3.icon
+        buildPhase: resources
+        type: folder
+      - path: Canticle/Icon4.icon
+        buildPhase: resources
+        type: folder
+      - path: Canticle/Icon5.icon
+        buildPhase: resources
+        type: folder
+      - path: Canticle/Icon6.icon
+        buildPhase: resources
+        type: folder
+      - path: Canticle/Icon7.icon
+        buildPhase: resources
+        type: folder
+      - path: Canticle/Icon8.icon
+        buildPhase: resources
+        type: folder
+      - path: Canticle/Resources/BibleOriginal
         buildPhase: resources
         type: folder
     resources:
       - path: Canticle/Resources
+        excludes:
+          - "BibleOriginal"
       - path: "Canticle/Preview Content"
     settings:
       base:
         PRODUCT_NAME: Canticle
-        PRODUCT_BUNDLE_IDENTIFIER: com.canticle.app
+        PRODUCT_BUNDLE_IDENTIFIER: com.canticle.canticle
+        DEVELOPMENT_TEAM: 9YYZ7P7Y9Q
         MARKETING_VERSION: "1.0"
         CURRENT_PROJECT_VERSION: "1"
         SWIFT_VERSION: "6.0"
         TARGETED_DEVICE_FAMILY: "1"
-        ASSETCATALOG_COMPILER_APPICON_NAME: ""
+        ASSETCATALOG_COMPILER_APPICON_NAME: Icon1
+        ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES: "Icon2 Icon3 Icon4 Icon5 Icon6 Icon7 Icon8"
+        ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS: YES
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         DEVELOPMENT_ASSET_PATHS: "\"Canticle/Preview Content\""
         ENABLE_PREVIEWS: true

@@ -3,7 +3,7 @@ import Foundation
 /// Determines which office to show and where "today" sits in the calendar year.
 enum TimeOfDayService {
     /// The hour (24h clock) at which the app switches from Morning to Evening Prayer.
-    static let noonCutoffHour = 12
+    static let noonCutoffHour = 15
 
     static func currentContext(now: Date = Date(), calendar: Calendar = .current) -> DayContext {
         let hour = calendar.component(.hour, from: now)

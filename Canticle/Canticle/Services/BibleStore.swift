@@ -1,12 +1,16 @@
+import Combine
 import Foundation
 
-/// Loads Bible text on demand from the per-book JSON files in `Resources/Bible` and resolves
-/// references (including the abbreviated book names used in the 1662 Kalendar's Table of
-/// Lessons, e.g. "Gen.", "1 Cor.", "Ecclus.") to their text.
+/// Loads Bible text on demand from the per-book JSON files in `Resources/Bible` (or, when
+/// `useOriginalLanguages` is on, `Resources/BibleOriginal`) and resolves references (including
+/// the abbreviated book names used in the 1662 Kalendar's Table of Lessons, e.g. "Gen.",
+/// "1 Cor.", "Ecclus.") to their text.
 ///
 /// King James Version for the 66 canonical books; the Apocrypha books are from the 1611
 /// Authorized Version and keep that edition's archaic spelling (see the README) — a handful of
-/// autumn Lessons in the 1662 Kalendar are appointed from the Apocrypha.
+/// autumn Lessons in the 1662 Kalendar are appointed from the Apocrypha. The 66 canonical books
+/// can also be read in their original languages (Hebrew Masoretic Text / Koine Greek); the
+/// Apocrypha has no such source text and always stays in English.
 @MainActor
 final class BibleStore: ObservableObject {
     static let shared = BibleStore()
@@ -16,15 +20,32 @@ final class BibleStore: ObservableObject {
         let slug: String
         let chapterCount: Int
         let isApocrypha: Bool
+        let hasOriginalLanguage: Bool
     }
+
+    /// When true, resolves canonical (non-Apocrypha) books to their Hebrew/Greek
+    /// text in `Resources/BibleOriginal` instead of the KJV/AV English in
+    /// `Resources/Bible`. The Apocrypha has no source text in either original
+    /// language, so it stays in English regardless of this setting.
+    @Published var useOriginalLanguages: Bool {
+        didSet {
+            guard useOriginalLanguages != oldValue else { return }
+            UserDefaults.standard.set(useOriginalLanguages, forKey: Self.useOriginalLanguagesKey)
+            loadedBooks.removeAll()
+        }
+    }
+
+    private static let useOriginalLanguagesKey = "useOriginalLanguageBibleText"
 
     private var canonicalNameByNormalizedKey: [String: String] = [:]
     private var slugByCanonicalName: [String: String] = [:]
+    private var hasOriginalLanguageByCanonicalName: [String: Bool] = [:]
     private var loadedBooks: [String: BibleBook] = [:]
     private let bundle: Bundle
 
     init(bundle: Bundle = .main) {
         self.bundle = bundle
+        self.useOriginalLanguages = UserDefaults.standard.bool(forKey: Self.useOriginalLanguagesKey)
         loadManifest()
     }
 
@@ -58,8 +79,10 @@ final class BibleStore: ObservableObject {
     }
 
     private func loadBook(slug: String, canonicalName: String) -> BibleBook? {
+        let useOriginal = useOriginalLanguages && (hasOriginalLanguageByCanonicalName[canonicalName] ?? false)
+        let subdirectory = useOriginal ? "BibleOriginal" : "Bible"
         if let cached = loadedBooks[canonicalName] { return cached }
-        guard let url = bundle.url(forResource: slug, withExtension: "json", subdirectory: "Bible")
+        guard let url = bundle.url(forResource: slug, withExtension: "json", subdirectory: subdirectory)
             ?? bundle.url(forResource: slug, withExtension: "json"),
             let data = try? Data(contentsOf: url),
             let book = try? JSONDecoder().decode(BibleBook.self, from: data)
@@ -79,6 +102,7 @@ final class BibleStore: ObservableObject {
         }
         for entry in entries {
             slugByCanonicalName[entry.book] = entry.slug
+            hasOriginalLanguageByCanonicalName[entry.book] = entry.hasOriginalLanguage
             canonicalNameByNormalizedKey[Self.normalize(entry.book)] = entry.book
         }
         for (alias, canonical) in Self.bookAliases where slugByCanonicalName[canonical] != nil {

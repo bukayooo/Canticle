@@ -3,9 +3,28 @@ import UIKit
 
 struct SettingsView: View {
     @State private var currentIconName: String? = UIApplication.shared.alternateIconName
+    @ObservedObject private var bibleStore = BibleStore.shared
 
     var body: some View {
         List {
+            Section {
+                Toggle(isOn: $bibleStore.useOriginalLanguages) {
+                    Text("Original Languages (Hebrew & Greek)")
+                        .font(Typography.body)
+                        .foregroundStyle(Theme.primaryText)
+                }
+                .tint(Theme.crimson)
+                .listRowBackground(Theme.parchmentPanel)
+            } header: {
+                Text("Bible Text")
+                    .font(Typography.caption)
+                    .foregroundStyle(Theme.secondaryText)
+            } footer: {
+                Text("Shows the Old and New Testaments in Hebrew and Koine Greek instead of the King James Version. The Apocrypha remains in English, as no original-language text for it is available.")
+                    .font(Typography.caption)
+                    .foregroundStyle(Theme.secondaryText)
+            }
+
             Section {
                 ForEach(AppIconOption.all) { option in
                     Button {

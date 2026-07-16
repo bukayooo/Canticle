@@ -39,6 +39,7 @@ final class DevotionalViewModel: ObservableObject {
     private let bibleStore: BibleStore
     private let properSundayStore: ProperSundayStore
     private let collectsStore: CollectsStore
+    private var cancellables: Set<AnyCancellable> = []
 
     init(
         calendarStore: CalendarStore = .shared,
@@ -55,6 +56,20 @@ final class DevotionalViewModel: ObservableObject {
         self.collectsStore = collectsStore
         self.context = TimeOfDayService.currentContext(now: now)
         rebuild()
+
+        // Lessons and Psalms are resolved (and their text baked into `blocks`) once in
+        // rebuild(), so flipping the Hebrew/Greek setting in Settings needs to explicitly
+        // trigger a rebuild - otherwise the currently displayed office keeps showing whatever
+        // text was resolved before the toggle. `@Published` publishes on `willSet`, before the
+        // new value is actually stored, so calling rebuild() directly here would have it
+        // re-read `bibleStore.useOriginalLanguages` while the old value is still in place -
+        // deferring to a Task lets the toggle's own property write finish first.
+        bibleStore.$useOriginalLanguages
+            .dropFirst()
+            .sink { [weak self] _ in
+                Task { @MainActor in self?.rebuild() }
+            }
+            .store(in: &cancellables)
     }
 
     /// Re-checks the clock and rebuilds the displayed office. Call when the app returns to the

@@ -3,480 +3,560 @@
     "book": "Genesis",
     "slug": "genesis",
     "chapterCount": 50,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Exodus",
     "slug": "exodus",
     "chapterCount": 40,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Leviticus",
     "slug": "leviticus",
     "chapterCount": 27,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Numbers",
     "slug": "numbers",
     "chapterCount": 36,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Deuteronomy",
     "slug": "deuteronomy",
     "chapterCount": 34,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Joshua",
     "slug": "joshua",
     "chapterCount": 24,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Judges",
     "slug": "judges",
     "chapterCount": 21,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Ruth",
     "slug": "ruth",
     "chapterCount": 4,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "1 Samuel",
     "slug": "1samuel",
     "chapterCount": 31,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "2 Samuel",
     "slug": "2samuel",
     "chapterCount": 24,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "1 Kings",
     "slug": "1kings",
     "chapterCount": 22,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "2 Kings",
     "slug": "2kings",
     "chapterCount": 25,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "1 Chronicles",
     "slug": "1chronicles",
     "chapterCount": 29,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "2 Chronicles",
     "slug": "2chronicles",
     "chapterCount": 36,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Ezra",
     "slug": "ezra",
     "chapterCount": 10,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Nehemiah",
     "slug": "nehemiah",
     "chapterCount": 13,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Esther",
     "slug": "esther",
     "chapterCount": 10,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Job",
     "slug": "job",
     "chapterCount": 42,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Psalms",
     "slug": "psalms_kjv",
     "chapterCount": 150,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Proverbs",
     "slug": "proverbs",
     "chapterCount": 31,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Ecclesiastes",
     "slug": "ecclesiastes",
     "chapterCount": 12,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Song of Solomon",
     "slug": "songofsolomon",
     "chapterCount": 8,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Isaiah",
     "slug": "isaiah",
     "chapterCount": 66,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Jeremiah",
     "slug": "jeremiah",
     "chapterCount": 52,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Lamentations",
     "slug": "lamentations",
     "chapterCount": 5,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Ezekiel",
     "slug": "ezekiel",
     "chapterCount": 48,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Daniel",
     "slug": "daniel",
     "chapterCount": 12,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Hosea",
     "slug": "hosea",
     "chapterCount": 14,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Joel",
     "slug": "joel",
     "chapterCount": 3,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Amos",
     "slug": "amos",
     "chapterCount": 9,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Obadiah",
     "slug": "obadiah",
     "chapterCount": 1,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Jonah",
     "slug": "jonah",
     "chapterCount": 4,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Micah",
     "slug": "micah",
     "chapterCount": 7,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Nahum",
     "slug": "nahum",
     "chapterCount": 3,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Habakkuk",
     "slug": "habakkuk",
     "chapterCount": 3,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Zephaniah",
     "slug": "zephaniah",
     "chapterCount": 3,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Haggai",
     "slug": "haggai",
     "chapterCount": 2,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Zechariah",
     "slug": "zechariah",
     "chapterCount": 14,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Malachi",
     "slug": "malachi",
     "chapterCount": 4,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Matthew",
     "slug": "matthew",
     "chapterCount": 28,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Mark",
     "slug": "mark",
     "chapterCount": 16,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Luke",
     "slug": "luke",
     "chapterCount": 24,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "John",
     "slug": "john",
     "chapterCount": 21,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Acts",
     "slug": "acts",
     "chapterCount": 28,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Romans",
     "slug": "romans",
     "chapterCount": 16,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "1 Corinthians",
     "slug": "1corinthians",
     "chapterCount": 16,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "2 Corinthians",
     "slug": "2corinthians",
     "chapterCount": 13,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Galatians",
     "slug": "galatians",
     "chapterCount": 6,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Ephesians",
     "slug": "ephesians",
     "chapterCount": 6,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Philippians",
     "slug": "philippians",
     "chapterCount": 4,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Colossians",
     "slug": "colossians",
     "chapterCount": 4,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "1 Thessalonians",
     "slug": "1thessalonians",
     "chapterCount": 5,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "2 Thessalonians",
     "slug": "2thessalonians",
     "chapterCount": 3,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "1 Timothy",
     "slug": "1timothy",
     "chapterCount": 6,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "2 Timothy",
     "slug": "2timothy",
     "chapterCount": 4,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Titus",
     "slug": "titus",
     "chapterCount": 3,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Philemon",
     "slug": "philemon",
     "chapterCount": 1,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Hebrews",
     "slug": "hebrews",
     "chapterCount": 13,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "James",
     "slug": "james",
     "chapterCount": 5,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "1 Peter",
     "slug": "1peter",
     "chapterCount": 5,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "2 Peter",
     "slug": "2peter",
     "chapterCount": 3,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "1 John",
     "slug": "1john",
     "chapterCount": 5,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "2 John",
     "slug": "2john",
     "chapterCount": 1,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "3 John",
     "slug": "3john",
     "chapterCount": 1,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Jude",
     "slug": "jude",
     "chapterCount": 1,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Revelation",
     "slug": "revelation",
     "chapterCount": 22,
-    "isApocrypha": false
+    "isApocrypha": false,
+    "hasOriginalLanguage": true
   },
   {
     "book": "Tobit",
     "slug": "tobit",
     "chapterCount": 14,
-    "isApocrypha": true
+    "isApocrypha": true,
+    "hasOriginalLanguage": false
   },
   {
     "book": "Judith",
     "slug": "judith",
     "chapterCount": 16,
-    "isApocrypha": true
+    "isApocrypha": true,
+    "hasOriginalLanguage": false
   },
   {
     "book": "Additions to Esther",
     "slug": "additionstoesther",
     "chapterCount": 7,
-    "isApocrypha": true
+    "isApocrypha": true,
+    "hasOriginalLanguage": false
   },
   {
     "book": "Wisdom of Solomon",
     "slug": "wisdomofsolomon",
     "chapterCount": 19,
-    "isApocrypha": true
+    "isApocrypha": true,
+    "hasOriginalLanguage": false
   },
   {
     "book": "Ecclesiasticus",
     "slug": "ecclesiasticus",
     "chapterCount": 51,
-    "isApocrypha": true
+    "isApocrypha": true,
+    "hasOriginalLanguage": false
   },
   {
     "book": "Baruch",
     "slug": "baruch",
     "chapterCount": 6,
-    "isApocrypha": true
+    "isApocrypha": true,
+    "hasOriginalLanguage": false
   },
   {
     "book": "Prayer of Azariah",
     "slug": "prayerofazariah",
     "chapterCount": 1,
-    "isApocrypha": true
+    "isApocrypha": true,
+    "hasOriginalLanguage": false
   },
   {
     "book": "Susanna",
     "slug": "susanna",
     "chapterCount": 1,
-    "isApocrypha": true
+    "isApocrypha": true,
+    "hasOriginalLanguage": false
   },
   {
     "book": "Bel and the Dragon",
     "slug": "belandthedragon",
     "chapterCount": 1,
-    "isApocrypha": true
+    "isApocrypha": true,
+    "hasOriginalLanguage": false
   },
   {
     "book": "1 Maccabees",
     "slug": "1maccabees",
     "chapterCount": 16,
-    "isApocrypha": true
+    "isApocrypha": true,
+    "hasOriginalLanguage": false
   },
   {
     "book": "2 Maccabees",
     "slug": "2maccabees",
     "chapterCount": 15,
-    "isApocrypha": true
+    "isApocrypha": true,
+    "hasOriginalLanguage": false
   },
   {
     "book": "1 Esdras",
     "slug": "1esdras",
     "chapterCount": 9,
-    "isApocrypha": true
+    "isApocrypha": true,
+    "hasOriginalLanguage": false
   },
   {
     "book": "Prayer of Manasseh",
     "slug": "prayerofmanasseh",
     "chapterCount": 1,
-    "isApocrypha": true
+    "isApocrypha": true,
+    "hasOriginalLanguage": false
   },
   {
     "book": "2 Esdras",
     "slug": "2esdras",
     "chapterCount": 16,
-    "isApocrypha": true
+    "isApocrypha": true,
+    "hasOriginalLanguage": false
   }
 ]

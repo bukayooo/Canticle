@@ -25,7 +25,11 @@ struct PsalmsView: View {
     let psalms: [PsalmText]
 
     private func psalmHeading(for psalm: PsalmText) -> String {
-        "Psalm \(psalm.number)  ·  \(psalm.title)"
+        // The Coverdale translation always supplies a Latin incipit, but the Hebrew text (see
+        // BibleStore.useOriginalLanguages) only has a title when the psalm carries a genuine
+        // Masoretic superscription - many don't, so an empty title is expected, not a bug.
+        guard !psalm.title.isEmpty else { return "Psalm \(psalm.number)" }
+        return "Psalm \(psalm.number)  ·  \(psalm.title)"
     }
 
     var body: some View {

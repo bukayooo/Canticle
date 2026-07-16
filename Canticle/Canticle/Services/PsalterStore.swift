@@ -6,14 +6,22 @@ import Foundation
 ///
 /// Unlike the lectionary calendar, this data doesn't depend on the calendar date — the Psalter
 /// cycle repeats every month — so it ships complete rather than as a sample.
+///
+/// Also loads a Hebrew psalms_hebrew.json (natural Masoretic verse divisions, not KJV-aligned
+/// like `BibleStore`'s copy, since the Psalter always shows a complete psalm rather than a verse
+/// range) and returns that instead when `BibleStore.useOriginalLanguages` is on - the Psalms are
+/// part of the Hebrew canon, unlike the Apocrypha, so this always has a Hebrew counterpart.
 @MainActor
 final class PsalterStore: ObservableObject {
     static let shared = PsalterStore()
 
     private var psalmsByNumber: [Int: PsalmText] = [:]
+    private var hebrewPsalmsByNumber: [Int: PsalmText] = [:]
     private var cycleByDayAndOffice: [Int: [Office: [Int]]] = [:]
+    private let bibleStore: BibleStore
 
-    init(bundle: Bundle = .main) {
+    init(bundle: Bundle = .main, bibleStore: BibleStore = .shared) {
+        self.bibleStore = bibleStore
         load(from: bundle)
     }
 
@@ -21,7 +29,8 @@ final class PsalterStore: ObservableObject {
     func psalms(dayOfMonth: Int, office: Office) -> [PsalmText] {
         let day = dayOfMonth == 31 ? 30 : dayOfMonth
         let numbers = cycleByDayAndOffice[day]?[office] ?? []
-        return numbers.compactMap { psalmsByNumber[$0] }
+        let byNumber = bibleStore.useOriginalLanguages ? hebrewPsalmsByNumber : psalmsByNumber
+        return numbers.compactMap { byNumber[$0] }
     }
 
     private func load(from bundle: Bundle) {
@@ -47,5 +56,15 @@ final class PsalterStore: ObservableObject {
         } catch {
             assertionFailure("Failed to decode Psalter JSON: \(error)")
         }
+
+        guard let hebrewURL = bundle.url(forResource: "psalms_hebrew", withExtension: "json", subdirectory: "Psalter")
+            ?? bundle.url(forResource: "psalms_hebrew", withExtension: "json"),
+            let hebrewData = try? Data(contentsOf: hebrewURL),
+            let hebrewPsalms = try? JSONDecoder().decode([PsalmText].self, from: hebrewData)
+        else {
+            assertionFailure("Hebrew Psalter JSON missing from bundle resources")
+            return
+        }
+        hebrewPsalmsByNumber = Dictionary(uniqueKeysWithValues: hebrewPsalms.map { ($0.number, $0) })
     }
 }

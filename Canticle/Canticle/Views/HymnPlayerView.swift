@@ -31,7 +31,6 @@ struct HymnPlayerView: View {
             .padding(.bottom, 40)
         }
         .background(Theme.parchment.ignoresSafeArea())
-        .navigationTitle(hymn.title)
         .navigationBarTitleDisplayMode(.inline)
         .onAppear { player.load(url: HymnStore.shared.audioURL(for: hymn), stanzaCount: hymn.stanzaCount) }
         .onDisappear { player.stop() }

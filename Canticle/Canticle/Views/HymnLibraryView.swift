@@ -1,10 +1,11 @@
 import SwiftUI
 
-/// Manages the shared hymn library from Settings: lists uploaded hymns, lets the user delete
-/// them, and presents `AddHymnView` to upload a new one.
+/// Manages the shared hymn library from Settings: lists uploaded hymns, lets the user edit or
+/// delete them, and presents `AddHymnView` to upload a new one.
 struct HymnLibraryView: View {
     @ObservedObject private var hymnStore = HymnStore.shared
     @State private var isAddingHymn = false
+    @State private var hymnToEdit: Hymn?
 
     var body: some View {
         List {
@@ -13,12 +14,20 @@ struct HymnLibraryView: View {
                     .font(Typography.body)
                     .foregroundStyle(Theme.primaryText)
                     .listRowBackground(Theme.parchmentPanel)
-            }
-            .onDelete { offsets in
-                // Snapshot the target hymns before deleting any of them — deleting by index
-                // one-at-a-time would shift later indices in the same offset set out from
-                // under us once the array shrinks.
-                offsets.map { hymnStore.hymns[$0] }.forEach(hymnStore.deleteHymn)
+                    .swipeActions(edge: .trailing) {
+                        Button {
+                            hymnToEdit = hymn
+                        } label: {
+                            Label("Edit", systemImage: "pencil")
+                        }
+                        .tint(Theme.deepGold)
+
+                        Button(role: .destructive) {
+                            hymnStore.deleteHymn(hymn)
+                        } label: {
+                            Label("Delete", systemImage: "trash")
+                        }
+                    }
             }
         }
         .scrollContentBackground(.hidden)
@@ -37,6 +46,9 @@ struct HymnLibraryView: View {
         }
         .sheet(isPresented: $isAddingHymn) {
             AddHymnView()
+        }
+        .sheet(item: $hymnToEdit) { hymn in
+            AddHymnView(hymnToEdit: hymn)
         }
     }
 }

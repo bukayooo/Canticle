@@ -13,14 +13,18 @@ struct Hymn: Identifiable, Codable, Equatable {
     /// stanza's tune, so playback repeats it this many times total (once, then `stanzaCount - 1`
     /// more) so the singer has a pass for each stanza's words.
     var stanzaCount: Int
+    /// Freeform theme (e.g. "Advent", "Communion") used to group hymns in the picker. Empty
+    /// means uncategorized.
+    var category: String
 
-    init(id: UUID, title: String, lyrics: String, audioFileName: String, dateAdded: Date, stanzaCount: Int = 1) {
+    init(id: UUID, title: String, lyrics: String, audioFileName: String, dateAdded: Date, stanzaCount: Int = 1, category: String = "") {
         self.id = id
         self.title = title
         self.lyrics = lyrics
         self.audioFileName = audioFileName
         self.dateAdded = dateAdded
         self.stanzaCount = stanzaCount
+        self.category = category
     }
 
     init(from decoder: Decoder) throws {
@@ -32,6 +36,8 @@ struct Hymn: Identifiable, Codable, Equatable {
         dateAdded = try container.decode(Date.self, forKey: .dateAdded)
         // Hymns saved before stanza support was added won't have this key.
         stanzaCount = try container.decodeIfPresent(Int.self, forKey: .stanzaCount) ?? 1
+        // Hymns saved before category support was added won't have this key.
+        category = try container.decodeIfPresent(String.self, forKey: .category) ?? ""
     }
 }
 

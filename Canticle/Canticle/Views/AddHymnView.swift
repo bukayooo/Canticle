@@ -1,21 +1,43 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
-/// Sheet for uploading a new hymn into the shared library: an audio file, a title, and the
-/// words to sing along to.
+/// Sheet for uploading a new hymn into the shared library (or editing an existing one): an audio
+/// file, a title, a category, and the words to sing along to.
 struct AddHymnView: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject private var hymnStore = HymnStore.shared
 
-    @State private var title = ""
-    @State private var lyrics = ""
-    @State private var audioURL: URL?
-    @State private var stanzaCount = 1
+    /// Non-nil when editing an existing hymn rather than adding a new one; every field is
+    /// pre-populated from it and Save updates it in place instead of creating a new entry.
+    private let editingHymn: Hymn?
+
+    @State private var title: String
+    @State private var lyrics: String
+    @State private var category: String
+    @State private var stanzaCount: Int
+    /// Only set when the user picks a (replacement) audio file in this session. When editing,
+    /// leaving this nil keeps the hymn's existing audio.
+    @State private var newAudioURL: URL?
     @State private var isImportingAudio = false
     @State private var errorMessage: String?
 
+    init(hymnToEdit: Hymn? = nil) {
+        self.editingHymn = hymnToEdit
+        _title = State(initialValue: hymnToEdit?.title ?? "")
+        _lyrics = State(initialValue: hymnToEdit?.lyrics ?? "")
+        _category = State(initialValue: hymnToEdit?.category ?? "")
+        _stanzaCount = State(initialValue: hymnToEdit?.stanzaCount ?? 1)
+    }
+
+    private var audioDisplayName: String {
+        if let newAudioURL { return newAudioURL.lastPathComponent }
+        if let editingHymn { return editingHymn.audioFileName }
+        return "Choose…"
+    }
+
     private var canSave: Bool {
-        !title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && audioURL != nil
+        let hasAudio = newAudioURL != nil || editingHymn != nil
+        return !title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && hasAudio
     }
 
     var body: some View {
@@ -35,12 +57,17 @@ struct AddHymnView: View {
                                 .font(Typography.body)
                                 .foregroundStyle(Theme.primaryText)
                             Spacer()
-                            Text(audioURL?.lastPathComponent ?? "Choose…")
+                            Text(audioDisplayName)
                                 .font(Typography.caption)
                                 .foregroundStyle(Theme.secondaryText)
                         }
                     }
                     .listRowBackground(Theme.parchmentPanel)
+
+                    TextField("Category", text: $category)
+                        .font(Typography.body)
+                        .foregroundStyle(Theme.primaryText)
+                        .listRowBackground(Theme.parchmentPanel)
 
                     Stepper(value: $stanzaCount, in: 1...20) {
                         Text("Stanzas: \(stanzaCount)")
@@ -80,7 +107,7 @@ struct AddHymnView: View {
             }
             .scrollContentBackground(.hidden)
             .background(Theme.parchment.ignoresSafeArea())
-            .navigationTitle("Add Hymn")
+            .navigationTitle(editingHymn == nil ? "Add Hymn" : "Edit Hymn")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -94,7 +121,7 @@ struct AddHymnView: View {
             .fileImporter(isPresented: $isImportingAudio, allowedContentTypes: [.audio]) { result in
                 switch result {
                 case .success(let url):
-                    audioURL = url
+                    newAudioURL = url
                 case .failure(let error):
                     errorMessage = error.localizedDescription
                 }
@@ -103,14 +130,26 @@ struct AddHymnView: View {
     }
 
     private func save() {
-        guard let audioURL else { return }
         do {
-            _ = try hymnStore.addHymn(
-                title: title.trimmingCharacters(in: .whitespacesAndNewlines),
-                lyrics: lyrics,
-                sourceURL: audioURL,
-                stanzaCount: stanzaCount
-            )
+            if let editingHymn {
+                try hymnStore.updateHymn(
+                    editingHymn,
+                    title: title.trimmingCharacters(in: .whitespacesAndNewlines),
+                    lyrics: lyrics,
+                    category: category.trimmingCharacters(in: .whitespacesAndNewlines),
+                    stanzaCount: stanzaCount,
+                    newAudioSourceURL: newAudioURL
+                )
+            } else {
+                guard let newAudioURL else { return }
+                _ = try hymnStore.addHymn(
+                    title: title.trimmingCharacters(in: .whitespacesAndNewlines),
+                    lyrics: lyrics,
+                    sourceURL: newAudioURL,
+                    stanzaCount: stanzaCount,
+                    category: category.trimmingCharacters(in: .whitespacesAndNewlines)
+                )
+            }
             dismiss()
         } catch {
             errorMessage = error.localizedDescription

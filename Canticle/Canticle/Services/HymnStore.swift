@@ -53,7 +53,7 @@ final class HymnStore: ObservableObject {
 
     /// Copies `sourceURL` (typically a security-scoped URL handed back by `.fileImporter`) into
     /// the Hymns directory and adds it to the library.
-    func addHymn(title: String, lyrics: String, sourceURL: URL, stanzaCount: Int = 1) throws -> Hymn {
+    func addHymn(title: String, lyrics: String, sourceURL: URL, stanzaCount: Int = 1, category: String = "") throws -> Hymn {
         let didAccess = sourceURL.startAccessingSecurityScopedResource()
         defer { if didAccess { sourceURL.stopAccessingSecurityScopedResource() } }
 
@@ -69,11 +69,40 @@ final class HymnStore: ObservableObject {
             lyrics: lyrics,
             audioFileName: fileName,
             dateAdded: Date(),
-            stanzaCount: max(stanzaCount, 1)
+            stanzaCount: max(stanzaCount, 1),
+            category: category
         )
         hymns.append(hymn)
         saveIndex()
         return hymn
+    }
+
+    /// Updates an existing hymn's title/lyrics/category/stanza count in place, optionally
+    /// replacing its audio (copying in the new file and removing the old one) if the user chose
+    /// a replacement while editing.
+    func updateHymn(_ hymn: Hymn, title: String, lyrics: String, category: String, stanzaCount: Int, newAudioSourceURL: URL?) throws {
+        guard let index = hymns.firstIndex(where: { $0.id == hymn.id }) else { return }
+
+        var updated = hymns[index]
+        updated.title = title
+        updated.lyrics = lyrics
+        updated.category = category
+        updated.stanzaCount = max(stanzaCount, 1)
+
+        if let newAudioSourceURL {
+            let didAccess = newAudioSourceURL.startAccessingSecurityScopedResource()
+            defer { if didAccess { newAudioSourceURL.stopAccessingSecurityScopedResource() } }
+
+            let ext = newAudioSourceURL.pathExtension.isEmpty ? "m4a" : newAudioSourceURL.pathExtension
+            let fileName = "\(UUID().uuidString).\(ext)"
+            let destination = Self.hymnsDirectory.appendingPathComponent(fileName)
+            try fileManager.copyItem(at: newAudioSourceURL, to: destination)
+            try? fileManager.removeItem(at: audioURL(for: hymn))
+            updated.audioFileName = fileName
+        }
+
+        hymns[index] = updated
+        saveIndex()
     }
 
     func deleteHymn(_ hymn: Hymn) {

@@ -25,10 +25,8 @@ enum Litany {
         .response("have mercy upon us miserable sinners."),
         .versicle("O holy, blessed, and glorious Trinity, three Persons and one God:"),
         .response("have mercy upon us miserable sinners."),
-
-        .text("Remember not, Lord, our offences, nor the offences of our forefathers; neither take thou vengeance of our sins: Spare us, good Lord, spare thy people, whom thou hast redeemed with thy most precious blood, and be not angry with us for ever."),
+        .versicle("Remember not, Lord, our offences, nor the offences of our forefathers; neither take thou vengeance of our sins: Spare us, good Lord, spare thy people, whom thou hast redeemed with thy most precious blood, and be not angry with us for ever."),
         .response("Spare us, good Lord."),
-
         .versicle("From all evil and mischief; from sin; from the crafts and assaults of the devil; from thy wrath, and from everlasting damnation,"),
         .response("Good Lord, deliver us."),
         .versicle("From all blindness of heart; from pride, vainglory, and hypocrisy; from envy, hatred, and malice, and all uncharitableness,"),

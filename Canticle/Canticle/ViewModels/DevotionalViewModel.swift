@@ -9,6 +9,7 @@ enum DisplayBlock: Identifiable {
     case lesson(ResolvedLesson)
     case collect(Collect)
     case missingDailyContent(kind: MissingKind)
+    case hymnPrompt(HymnSlot)
 
     enum MissingKind {
         case psalms, firstLesson, secondLesson, collect
@@ -18,6 +19,12 @@ enum DisplayBlock: Identifiable {
         case sundayLessonNotImplemented
     }
 
+    /// Which end of the office a hymn prompt sits at. The block itself doesn't carry a specific
+    /// hymn — the user picks one from the shared library when they tap the prompt.
+    enum HymnSlot {
+        case opening, closing
+    }
+
     var id: String {
         switch self {
         case .liturgy(let item): return "liturgy-\(item.id)"
@@ -25,6 +32,7 @@ enum DisplayBlock: Identifiable {
         case .lesson(let reading): return "lesson-\(reading.reference)"
         case .collect(let collect): return "collect-\(collect.title)"
         case .missingDailyContent(let kind): return "missing-\(kind)"
+        case .hymnPrompt(let slot): return "hymn-\(slot)"
         }
     }
 }
@@ -39,6 +47,7 @@ final class DevotionalViewModel: ObservableObject {
     private let bibleStore: BibleStore
     private let properSundayStore: ProperSundayStore
     private let collectsStore: CollectsStore
+    private let hymnStore: HymnStore
     private var cancellables: Set<AnyCancellable> = []
 
     init(
@@ -47,6 +56,7 @@ final class DevotionalViewModel: ObservableObject {
         bibleStore: BibleStore = .shared,
         properSundayStore: ProperSundayStore = .shared,
         collectsStore: CollectsStore = .shared,
+        hymnStore: HymnStore = .shared,
         now: Date = Date()
     ) {
         self.calendarStore = calendarStore
@@ -54,6 +64,7 @@ final class DevotionalViewModel: ObservableObject {
         self.bibleStore = bibleStore
         self.properSundayStore = properSundayStore
         self.collectsStore = collectsStore
+        self.hymnStore = hymnStore
         self.context = TimeOfDayService.currentContext(now: now)
         rebuild()
 
@@ -65,6 +76,22 @@ final class DevotionalViewModel: ObservableObject {
         // re-read `bibleStore.useOriginalLanguages` while the old value is still in place -
         // deferring to a Task lets the toggle's own property write finish first.
         bibleStore.$useOriginalLanguages
+            .dropFirst()
+            .sink { [weak self] _ in
+                Task { @MainActor in self?.rebuild() }
+            }
+            .store(in: &cancellables)
+
+        // Same willSet-ordering reason as above: the hymn position pickers in Settings can be
+        // changed while ContentView sits underneath, so a rebuild needs to happen once the user
+        // navigates back to it.
+        hymnStore.$morningPosition
+            .dropFirst()
+            .sink { [weak self] _ in
+                Task { @MainActor in self?.rebuild() }
+            }
+            .store(in: &cancellables)
+        hymnStore.$eveningPosition
             .dropFirst()
             .sink { [weak self] _ in
                 Task { @MainActor in self?.rebuild() }
@@ -95,7 +122,7 @@ final class DevotionalViewModel: ObservableObject {
 
         let psalms = psalterStore.psalms(dayOfMonth: context.dayOfMonth, office: context.office)
 
-        blocks = fixedLiturgy.flatMap { item -> [DisplayBlock] in
+        var result = fixedLiturgy.flatMap { item -> [DisplayBlock] in
             switch item.kind {
             case .psalmsSlot:
                 guard !psalms.isEmpty else { return [.missingDailyContent(kind: .psalms)] }
@@ -149,6 +176,17 @@ final class DevotionalViewModel: ObservableObject {
                 return [.liturgy(item)]
             }
         }
+
+        switch hymnStore.position(for: context.office) {
+        case .beginning:
+            result.insert(.hymnPrompt(.opening), at: 0)
+        case .end:
+            result.append(.hymnPrompt(.closing))
+        case .off:
+            break
+        }
+
+        blocks = result
     }
 
     /// For Sundays: resolves the appropriate Lesson from the Proper Sunday table. Falls back to

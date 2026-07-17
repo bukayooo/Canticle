@@ -29,8 +29,10 @@
 		2BA30583A6FF1255F5C044B1 /* genesis.json in Resources */ = {isa = PBXBuildFile; fileRef = 1BC8BFA7DA9220A3D55924BE /* genesis.json */; };
 		2C6EF1DC5A95F16F8C7721DC /* lamentations.json in Resources */ = {isa = PBXBuildFile; fileRef = 1E480458FFC15966E0284C13 /* lamentations.json */; };
 		2E0C8745A0A2A83AFD555F8E /* galatians.json in Resources */ = {isa = PBXBuildFile; fileRef = DE9C88A772AEB98CF7A8EC2E /* galatians.json */; };
+		2F78A86CB953B0C6C68E05E2 /* HymnPromptCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084CFF4E0376BB11DA075143 /* HymnPromptCardView.swift */; };
 		2FEA11AFC903D968404560C5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23DAAF2999E1DD4604ABB467 /* Preview Assets.xcassets */; };
 		339DDD3B72E82416898A9B7A /* PsalterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774C2FFA746A9752CC4F1F0C /* PsalterStore.swift */; };
+		3D11A9DB8C48007765E773BF /* Hymn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E09AB71B8A38E96E89862A7 /* Hymn.swift */; };
 		3F9F0534A54FDE7E9BC475B7 /* malachi.json in Resources */ = {isa = PBXBuildFile; fileRef = 2ECE7623A7CC9A23CC917CDF /* malachi.json */; };
 		40EF7653B377EB726C2ED85A /* joshua.json in Resources */ = {isa = PBXBuildFile; fileRef = 855ADB9DA30BA42455D0D416 /* joshua.json */; };
 		4313D46ED674B1446C6EC3F4 /* belandthedragon.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D25E7D909B99FB16C802286 /* belandthedragon.json */; };
@@ -39,9 +41,11 @@
 		4ADCFCE910DF16394D1B4B24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 099AB505D82B2114706F489C /* Assets.xcassets */; };
 		4B47A3AC338BB4A66CEA678F /* 1thessalonians.json in Resources */ = {isa = PBXBuildFile; fileRef = E752AAEE6F785EB88B560806 /* 1thessalonians.json */; };
 		4BDEF131951899218BEA6BFC /* 1maccabees.json in Resources */ = {isa = PBXBuildFile; fileRef = C2592441787FC12EF7242CA0 /* 1maccabees.json */; };
+		4C7A247A8804037099E0AEFC /* HymnPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D7E6DF5955E4AC7672B920 /* HymnPlayer.swift */; };
 		51E9C0AD6AE33CD1BDF98687 /* Icon3.icon in Resources */ = {isa = PBXBuildFile; fileRef = 8BB4FA90DA005820A77AC9E0 /* Icon3.icon */; };
 		543DB16CAD84F7ACC61ABBEB /* AthanasianCreed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FD1054768EFBEC730E37BC /* AthanasianCreed.swift */; };
 		57D71EC2407CCB373ECBA526 /* 2john.json in Resources */ = {isa = PBXBuildFile; fileRef = A80759E83620DD126B8606E4 /* 2john.json */; };
+		5A3E175EAF7A2E699BC0B3E6 /* AddHymnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42236A1E05EE040824ACA6C1 /* AddHymnView.swift */; };
 		5A724AF98CEE6AB976A0678E /* additionstoesther.json in Resources */ = {isa = PBXBuildFile; fileRef = CBDFE47DBF1ACAFCFEA6A241 /* additionstoesther.json */; };
 		5AC885DE73FEE7F50865BF4D /* john.json in Resources */ = {isa = PBXBuildFile; fileRef = D818BB29B1DB3BE5D5C128F9 /* john.json */; };
 		5C6974DB1537C7026444E361 /* Commination.swift in Sources */ = {isa = PBXBuildFile; fileRef = D983F6BF690553A89F248B48 /* Commination.swift */; };
@@ -74,8 +78,10 @@
 		89C2BC44D7C294ED1628B29B /* 1samuel.json in Resources */ = {isa = PBXBuildFile; fileRef = 10EC96262CF4A9394745AB16 /* 1samuel.json */; };
 		8B2706A1A0126496FA0179F0 /* prayerofazariah.json in Resources */ = {isa = PBXBuildFile; fileRef = 1BF6B174901B58133EA42B7A /* prayerofazariah.json */; };
 		8B7F65AF5B1A1B31884EEBAD /* CrusaderCrossShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE83DCE6C362682810B5F76 /* CrusaderCrossShape.swift */; };
+		8DEF2DC6BD567631A29DF966 /* HymnPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1EE536732D4C7665AD0A55 /* HymnPickerView.swift */; };
 		901B0E33F8EF91DAE659372B /* daniel.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E55B8E8FEDF253FD1677D9F /* daniel.json */; };
 		91ECE3DB51EC2CA17E721E0C /* Icon5.icon in Resources */ = {isa = PBXBuildFile; fileRef = 71E2A19786E5D7455E5A72AF /* Icon5.icon */; };
+		92BB3AF5A64EE2F848AFF079 /* HymnPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DB72F53B69C26EF8D211C6 /* HymnPlayerView.swift */; };
 		9394F1B32C41D8F7E7CA1F54 /* revelation.json in Resources */ = {isa = PBXBuildFile; fileRef = DA5ABB68DA42660983E837E7 /* revelation.json */; };
 		9638090859ABEF1D1755A517 /* 3john.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CEB98350CF30EF85EFFBBAF /* 3john.json */; };
 		96E28A801ED81BC85183E01C /* isaiah.json in Resources */ = {isa = PBXBuildFile; fileRef = DAAB60172B828149EB20B4E2 /* isaiah.json */; };
@@ -101,6 +107,7 @@
 		B7A678DD826DB624AE3A3908 /* Icon4.icon in Resources */ = {isa = PBXBuildFile; fileRef = B9C96C01F61DC7728AD1CB4E /* Icon4.icon */; };
 		B82BF78CCACF3E044A94A328 /* hebrews.json in Resources */ = {isa = PBXBuildFile; fileRef = 12AB65CE2D8117E6738EBD76 /* hebrews.json */; };
 		BEC48CC97F95267E9DB8856D /* 2peter.json in Resources */ = {isa = PBXBuildFile; fileRef = F786D9608E86F7EB4176D641 /* 2peter.json */; };
+		BFACE686D0A91858CDF623B7 /* HymnStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92136C09F13E9CF6ADD89C4 /* HymnStore.swift */; };
 		C034EE770C6C47A668C36BC3 /* ruth.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F7BA3E7AB49FBDB9DDE0D6A /* ruth.json */; };
 		C16A3E8ADEA8A29034A4CCA0 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F9EE4F4F737084DEAA559 /* SplashView.swift */; };
 		C193C3BCDA2E0590098365D6 /* Office.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D577D7A45540F52C902FE3 /* Office.swift */; };
@@ -139,12 +146,14 @@
 		F85DAFAFCDB3DC054873CACB /* 2maccabees.json in Resources */ = {isa = PBXBuildFile; fileRef = DC2E8C6E59A669B97EE3986A /* 2maccabees.json */; };
 		F998F0AAC26FBD0B536839E7 /* 1corinthians.json in Resources */ = {isa = PBXBuildFile; fileRef = 22BE33C64755D3981E3F49F1 /* 1corinthians.json */; };
 		FA941487630A30238B366120 /* obadiah.json in Resources */ = {isa = PBXBuildFile; fileRef = E8D694C161A3D2DE7A2F95EC /* obadiah.json */; };
+		FAB71FFD95E10C51FB0C2221 /* HymnLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F905D0D623BAA54B9E8F0A23 /* HymnLibraryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		00EA4B54FD1E51FB12EBA98D /* proverbs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = proverbs.json; sourceTree = "<group>"; };
 		041077AAE19219F74FA6A5D7 /* deuteronomy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = deuteronomy.json; sourceTree = "<group>"; };
 		05C28F73C28423C884675C83 /* ephesians.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ephesians.json; sourceTree = "<group>"; };
+		084CFF4E0376BB11DA075143 /* HymnPromptCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HymnPromptCardView.swift; sourceTree = "<group>"; };
 		099AB505D82B2114706F489C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09C1AC042C040FE4EFDE7F50 /* judges.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = judges.json; sourceTree = "<group>"; };
 		0A195CE56F2C1EBFF0F17D9E /* ezra.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ezra.json; sourceTree = "<group>"; };
@@ -180,8 +189,10 @@
 		39152BE7FF65D5E6A667A698 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		3DD0848499FF8E94C7C797D2 /* exodus.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = exodus.json; sourceTree = "<group>"; };
 		3E070728942AB15ECB1ABEB4 /* zephaniah.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = zephaniah.json; sourceTree = "<group>"; };
+		3E09AB71B8A38E96E89862A7 /* Hymn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hymn.swift; sourceTree = "<group>"; };
 		3E55B8E8FEDF253FD1677D9F /* daniel.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = daniel.json; sourceTree = "<group>"; };
 		403A30C04C252D7B88276883 /* 1esdras.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 1esdras.json; sourceTree = "<group>"; };
+		42236A1E05EE040824ACA6C1 /* AddHymnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHymnView.swift; sourceTree = "<group>"; };
 		43D814BA6FBC25BDF218931D /* 2kings.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 2kings.json; sourceTree = "<group>"; };
 		48863411FA0F4AD9D38DBC86 /* leviticus.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = leviticus.json; sourceTree = "<group>"; };
 		489DC7182630B53030CF0A3B /* BibleOriginal */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BibleOriginal; path = Canticle/Resources/BibleOriginal; sourceTree = SOURCE_ROOT; };
@@ -239,6 +250,7 @@
 		A8B9CBA6C180F5530A160A39 /* philippians.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = philippians.json; sourceTree = "<group>"; };
 		AA1D8E45877A469B13AC7487 /* TimeOfDayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDayService.swift; sourceTree = "<group>"; };
 		B3AFB63520E363DC232A752A /* LiturgyItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiturgyItem.swift; sourceTree = "<group>"; };
+		B8D7E6DF5955E4AC7672B920 /* HymnPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HymnPlayer.swift; sourceTree = "<group>"; };
 		B8E17EF5441D4FCAFD9E5245 /* 2corinthians.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 2corinthians.json; sourceTree = "<group>"; };
 		B9C96C01F61DC7728AD1CB4E /* Icon4.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; name = Icon4.icon; path = Canticle/Icon4.icon; sourceTree = SOURCE_ROOT; };
 		BE33558200D8511B94CD5F7E /* luke.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = luke.json; sourceTree = "<group>"; };
@@ -270,12 +282,16 @@
 		E752AAEE6F785EB88B560806 /* 1thessalonians.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 1thessalonians.json; sourceTree = "<group>"; };
 		E78B65E9CACF9A7D406C6E77 /* psalms_kjv.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = psalms_kjv.json; sourceTree = "<group>"; };
 		E8D694C161A3D2DE7A2F95EC /* obadiah.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = obadiah.json; sourceTree = "<group>"; };
+		E92136C09F13E9CF6ADD89C4 /* HymnStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HymnStore.swift; sourceTree = "<group>"; };
 		E9AD2775BA79E27A0125900F /* 1chronicles.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 1chronicles.json; sourceTree = "<group>"; };
 		EBE5774259DF2C968FCBB464 /* songofsolomon.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = songofsolomon.json; sourceTree = "<group>"; };
 		F575BDCF0E6BB017A89C4820 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F58A2F4F56003CB199258C05 /* micah.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = micah.json; sourceTree = "<group>"; };
 		F786D9608E86F7EB4176D641 /* 2peter.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 2peter.json; sourceTree = "<group>"; };
+		F7DB72F53B69C26EF8D211C6 /* HymnPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HymnPlayerView.swift; sourceTree = "<group>"; };
+		F905D0D623BAA54B9E8F0A23 /* HymnLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HymnLibraryView.swift; sourceTree = "<group>"; };
 		FAA0EB5D56598E83131B97F7 /* MorningPrayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorningPrayer.swift; sourceTree = "<group>"; };
+		FE1EE536732D4C7665AD0A55 /* HymnPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HymnPickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -446,6 +462,7 @@
 			children = (
 				7BE83DCE6C362682810B5F76 /* CrusaderCrossShape.swift */,
 				8169E3F038998DF0DAE3B723 /* DailyContentViews.swift */,
+				084CFF4E0376BB11DA075143 /* HymnPromptCardView.swift */,
 				172453860BAF23E76515713E /* LiturgyItemView.swift */,
 				115F9EE4F4F737084DEAA559 /* SplashView.swift */,
 			);
@@ -467,6 +484,8 @@
 				7B616DAB1DE6B2D42C545159 /* CalendarStore.swift */,
 				C1EB43579295D9D67785D85B /* ChurchYear.swift */,
 				19E92CEFD1463C600EEBCE5F /* CollectsStore.swift */,
+				B8D7E6DF5955E4AC7672B920 /* HymnPlayer.swift */,
+				E92136C09F13E9CF6ADD89C4 /* HymnStore.swift */,
 				1E208BD7662A126B87149216 /* MovableFeasts.swift */,
 				1AA98455249D2E020A1FC0DE /* NotificationService.swift */,
 				81AF9261FA81E8EC43458FE6 /* ProperSundayStore.swift */,
@@ -482,6 +501,7 @@
 				CFCA304F55A6E7C488B195B4 /* AppIconOption.swift */,
 				D55FB763FA6AB4C05856A0F7 /* BibleBook.swift */,
 				BEC285C71F9DE9841763AF3D /* DailyReadings.swift */,
+				3E09AB71B8A38E96E89862A7 /* Hymn.swift */,
 				B3AFB63520E363DC232A752A /* LiturgyItem.swift */,
 				63D577D7A45540F52C902FE3 /* Office.swift */,
 				E3BF7044F87D9173E72931AB /* ProperSundayEntry.swift */,
@@ -504,8 +524,12 @@
 		E72460F651B0EA607F086041 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				42236A1E05EE040824ACA6C1 /* AddHymnView.swift */,
 				C205DC7418CF3A834BD1BD6E /* ComminationView.swift */,
 				C8BB393BD082969258DA23A3 /* ContentView.swift */,
+				F905D0D623BAA54B9E8F0A23 /* HymnLibraryView.swift */,
+				FE1EE536732D4C7665AD0A55 /* HymnPickerView.swift */,
+				F7DB72F53B69C26EF8D211C6 /* HymnPlayerView.swift */,
 				1058215D559CBAAA35ED1956 /* LitanyView.swift */,
 				C172578DFC548AF83D820998 /* SettingsView.swift */,
 				726B403168F0F7A9B238E2A0 /* Components */,
@@ -705,6 +729,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A3E175EAF7A2E699BC0B3E6 /* AddHymnView.swift in Sources */,
 				A77FC2E05361566BF7731311 /* ApostlesCreed.swift in Sources */,
 				6A19E50C2E5EE040AC74DF2D /* AppIconOption.swift in Sources */,
 				543DB16CAD84F7ACC61ABBEB /* AthanasianCreed.swift in Sources */,
@@ -722,6 +747,13 @@
 				7C2E336FEDECD9F7AB4FF5BA /* DailyReadings.swift in Sources */,
 				C2DC86AC83A06CD2D918522F /* DevotionalViewModel.swift in Sources */,
 				F18A5E57B94240FAEF166D54 /* EveningPrayer.swift in Sources */,
+				3D11A9DB8C48007765E773BF /* Hymn.swift in Sources */,
+				FAB71FFD95E10C51FB0C2221 /* HymnLibraryView.swift in Sources */,
+				8DEF2DC6BD567631A29DF966 /* HymnPickerView.swift in Sources */,
+				4C7A247A8804037099E0AEFC /* HymnPlayer.swift in Sources */,
+				92BB3AF5A64EE2F848AFF079 /* HymnPlayerView.swift in Sources */,
+				2F78A86CB953B0C6C68E05E2 /* HymnPromptCardView.swift in Sources */,
+				BFACE686D0A91858CDF623B7 /* HymnStore.swift in Sources */,
 				AFEEA2AE7449EAAFFC1D724F /* Litany.swift in Sources */,
 				247649B550425AE9884F9928 /* LitanyView.swift in Sources */,
 				CA975F820A0A1284F24BB0C0 /* LiturgyItem.swift in Sources */,

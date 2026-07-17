@@ -168,6 +168,8 @@ struct ContentView: View {
             CollectView(collect: collect)
         case .missingDailyContent(let kind):
             MissingDailyContentView(kind: kind)
+        case .hymnPrompt(let slot):
+            HymnPromptCardView(slot: slot)
         }
     }
 

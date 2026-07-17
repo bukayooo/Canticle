@@ -5,6 +5,7 @@ struct SettingsView: View {
     @State private var currentIconName: String? = UIApplication.shared.alternateIconName
     @ObservedObject private var bibleStore = BibleStore.shared
     @ObservedObject private var notificationService = NotificationService.shared
+    @ObservedObject private var hymnStore = HymnStore.shared
 
     var body: some View {
         List {
@@ -50,6 +51,45 @@ struct SettingsView: View {
                 }
             } header: {
                 Text("Reminders")
+                    .font(Typography.caption)
+                    .foregroundStyle(Theme.secondaryText)
+            }
+
+            Section {
+                Picker(selection: $hymnStore.morningPosition) {
+                    ForEach(HymnPosition.allCases, id: \.self) { position in
+                        Text(position.label).tag(position)
+                    }
+                } label: {
+                    Text("Morning Prayer")
+                        .font(Typography.body)
+                        .foregroundStyle(Theme.primaryText)
+                }
+                .tint(Theme.crimson)
+                .listRowBackground(Theme.parchmentPanel)
+
+                Picker(selection: $hymnStore.eveningPosition) {
+                    ForEach(HymnPosition.allCases, id: \.self) { position in
+                        Text(position.label).tag(position)
+                    }
+                } label: {
+                    Text("Evening Prayer")
+                        .font(Typography.body)
+                        .foregroundStyle(Theme.primaryText)
+                }
+                .tint(Theme.crimson)
+                .listRowBackground(Theme.parchmentPanel)
+
+                NavigationLink {
+                    HymnLibraryView()
+                } label: {
+                    Text("Hymn Library")
+                        .font(Typography.reference)
+                        .foregroundStyle(Theme.crimson)
+                }
+                .listRowBackground(Theme.parchmentPanel)
+            } header: {
+                Text("Hymn")
                     .font(Typography.caption)
                     .foregroundStyle(Theme.secondaryText)
             }

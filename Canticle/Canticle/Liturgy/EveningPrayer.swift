@@ -61,7 +61,7 @@ enum EveningPrayer {
 
         .versicle("O Lord, shew thy mercy upon us."),
         .response("And grant us thy salvation."),
-        .versicle("O Lord, save the King."),
+        .versicle("O Lord, save the President."),
         .response("And mercifully hear us when we call upon thee."),
         .versicle("Endue thy Ministers with righteousness."),
         .response("And make thy chosen people joyful."),

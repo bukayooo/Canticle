@@ -17,24 +17,27 @@ struct SplashView: View {
     private let transitionDuration: Double = 0.45
 
     var body: some View {
-        Theme.gold
-            .ignoresSafeArea()
-            .overlay {
-                CrusaderCrossShape()
-                    .fill(Theme.crimson)
-                    .frame(width: 120, height: 120)
-                    .scaleEffect(crossScale)
-            }
-            .opacity(opacity)
-            .task {
-                try? await Task.sleep(for: holdDuration)
-                withAnimation(.easeIn(duration: transitionDuration)) {
-                    crossScale = 9
-                    opacity = 0
+        GeometryReader { proxy in
+            Theme.gold
+                .overlay {
+                    CrusaderCrossShape()
+                        .fill(Theme.crimson)
+                        .frame(width: 160, height: 160)
+                        .scaleEffect(crossScale)
+                        .position(x: proxy.size.width / 2, y: proxy.size.height / 2)
                 }
-                try? await Task.sleep(for: .seconds(transitionDuration))
-                onFinished()
+        }
+        .ignoresSafeArea()
+        .opacity(opacity)
+        .task {
+            try? await Task.sleep(for: holdDuration)
+            withAnimation(.easeIn(duration: transitionDuration)) {
+                crossScale = 9
+                opacity = 0
             }
+            try? await Task.sleep(for: .seconds(transitionDuration))
+            onFinished()
+        }
     }
 }
 
